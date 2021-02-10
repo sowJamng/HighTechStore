@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">High Tech Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"routerLink="/home"><span class="glyphicon glyphicon-home"></span>Home</a>
+        </li>
+
+        <div class="btn-group">
+          <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ordinateurs
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/PcPortable"  routerLinkActive="clickEventHandler()">PC Portable</a>
+            <a class="dropdown-item" routerLink="/PcBurreau"  routerLinkActive="clickEventHandler()">PC Burreau</a>
+            <a class="dropdown-item" routerLink="/Accesssoires"  routerLinkActive="clickEventHandler()">Accessoires</a>
+          </div>
+        </div>
+        <div class="btn-group">
+          <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Telephones
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/articles" >Smart Phone</a>
+            <a class="dropdown-item" routerLink="/articles"  >Telephone Fix</a>
+            <a class="dropdown-item" routerLink="/articles"  >Accesoires</a>
+          </div>
+        </div>
+        <div class="btn-group">
+          <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Stockage
+          </a>
+          <div class="dropdown-menu">
+            <a routerLink=""class="dropdown-item" routerLink="#">Disque Dur</a>
+            <a  class="dropdown-item" routerLink="/articles" >Clé USB</a>
+            <a class="dropdown-item" routerLink="/articles" >Accessoires</a>
+          </div>
+        </div>
+      </ul>
+
+    </div>
+    <ul>
+      <li class="nav-item">
+        <a class="nav-link active btn btn-success" aria-current="page" routerLink="/login">
+          Se Connecter</a>
+      </li>
+    </ul>
+  </div>
+</nav>
