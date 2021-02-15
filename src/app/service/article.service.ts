@@ -1,4 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
@@ -10,8 +10,10 @@ import { Souscategorie } from '../model/souscategorie';
   providedIn: 'root'
 })
 export class ArticleService {
+  private baseUrl = 'http://localhost:8080/HighTech/articles';
   cart:number=0;
   articleget:Article[]=[];
+  art:Article =new Article(0,'','',0,'','',new Souscategorie(0,''));
   articles:Article[]=[
     new Article(1,"HP","HP",500,"Ram 8GB disque 500Gb fr:2.5","../../../assets/images/ordis/bureau/b6.jpg",new Souscategorie(1,"PC Burreau")),
     new Article(2,"HP","HP",500,"Ram 8GB disque 500Gb fr:2.5","../../../assets/images/ordis/bureau/b4.jpg",new Souscategorie(1,"PC Burreau")),
@@ -30,22 +32,22 @@ export class ArticleService {
     new Article(15,"Iphone 11","Apple",450,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p3.jpg",new Souscategorie(2,'Smart Phone')),
     new Article(16,"Iphone 11 pro","Apple",400,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p1.jpg",new Souscategorie(2,'Smart Phone'))
 ];
-constructor() { }
+constructor(private http: HttpClient) { }
+getArticleList(): Observable<any> {
+  return this.http.get(`${this.baseUrl}`);
+}
 getAricles(){
   return this.articles;
 }
 getArticleBySousCat(name:string,keySearch:string){
   this.articleget=[];
-  this.articles.forEach(article=>{ 
+  this.articles.forEach(article=>{
   if((article.marque.toLowerCase().indexOf(keySearch.toLowerCase())!=-1||
   article.libelle.toLowerCase().indexOf(keySearch.toLowerCase())!=-1) &&
   article.souscategorie.nom.toLowerCase().search(name.toLowerCase())!=-1)
           this.articleget.push(article);
 });
 return this.articleget;
-  // return this.articles.filter(article=>{
-  //   return article.souscategorie.nom.toLowerCase().search(name.toLowerCase())!=-1
-  // });
   }
   getArticleByNameOrMarque(search:string,name:string){
     return this.articles.filter(article=>{
@@ -63,4 +65,11 @@ getClickEvent(): Observable<any>{
   return this.subject.asObservable();
 }
 
+getArticle(id:number):Article{;
+   this.articles.forEach(article=>{
+     if(article.id==id){
+       this.art=article;
+     }});
+     return this.art;
+}
 }

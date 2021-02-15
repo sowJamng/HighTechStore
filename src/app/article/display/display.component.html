@@ -11,10 +11,11 @@
 <div class="row row-cols-1" [ngClass]="{'col-md-9' :showCart===true,'row-cols-md-4':showCart===true,'row-cols-md-5':showCart===false}">
   <div class=" col md-2 col mb-2" *ngFor="let article of articles" >
     <div class="card h-100">
-     <img src={{article.photo}} class="card-img" alt="alt">
+    <img src={{article.photo}} class="card-img" alt="alt">
       <div class="card-body">
         <h3 class="card-title">{{article.libelle}}</h3>
         <p class="card-text">{{article.description}}</p>
+        <button (click)="articleDetails(article.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
       </div>
          <div class="card-footer">
           <button mat-mini-fab color="accent" [disabled]="disbledSelected(article)"

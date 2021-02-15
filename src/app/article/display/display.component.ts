@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Article } from 'src/app/model/article';
 import { ArticleService } from 'src/app/service/article.service';
 
@@ -15,10 +16,11 @@ showCart:boolean=false;
 prixTotal:number=0;
 nbCart:number=0;
 selectProducts:Article[]=[];
-  constructor(private articleService:ArticleService) { }
+  constructor(private router:Router, private articleService:ArticleService) { }
 
   ngOnInit(): void {
     this.getAllArticle();
+  //  reloadData()
   }
 
   getAllArticle(){
@@ -45,5 +47,11 @@ selectProducts:Article[]=[];
      }  //delete selectProducts[index];
     });
   }
+  articleDetails(id: number){
+    this.router.navigate(['details', id]);
+  }
+  // reloadData() {
+  //   this.articles = this.articleService.getArticleList();
+  // }
 
 }

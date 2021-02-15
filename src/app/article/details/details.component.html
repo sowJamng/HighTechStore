@@ -1,1 +1,18 @@
-<p>details works!</p>
+<div   class="row row-cols-1" >
+  <div *ngIf="article.id!=0" class=" row-cols-md-4 col md-2 col mb-2" >
+    <div class="card h-100">
+    <img src={{article.photo}} class="card-img" alt="alt">
+      <div class="card-body">
+        <h3 class="card-title">{{article.libelle}}</h3>
+        <p class="card-text">{{article.description}}</p>
+      </div>
+    </div>
+         <div class="card-footer">
+          <button  mat-mini-fab color="accent" style="color: green;"
+           matBadgeOverlap="true" matBadgeColor="primary" [matBadge]="'+'" (click)="commander()" aria-label=" plus one icon">
+          <mat-icon>add_shopping_cart</mat-icon>Commander
+        </button>
+      </div>
+    </div>
+  </div><br><br><br><br><br>
+  <button (click)="list()" class="btn btn-primary">Tous les  articles</button><br>

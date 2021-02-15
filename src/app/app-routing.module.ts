@@ -6,6 +6,7 @@ import { PcAccessoiresComponent } from './pc-accessoires/pc-accessoires.componen
 import { HomeComponent } from './home/home.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { SmartPhoneComponent } from './telephones/smart-phone/smart-phone.component';
+import { DetailsComponent } from './article/details/details.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'home', pathMatch: 'full'},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'Accessoires',component:PcAccessoiresComponent},
   {path:'home',component:HomeComponent},
   {path:'login',component:ConnexionComponent},
-  {path:'smartPhone',component:SmartPhoneComponent}
+  {path:'smartPhone',component:SmartPhoneComponent},
+  {path:'details/:id',component:DetailsComponent}
 ];
 
 @NgModule({
