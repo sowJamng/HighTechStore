@@ -49,10 +49,11 @@ Thumbs.db
 angular.json
 package-lock.json
 package.json
-tsconfig.app.json
+.angulardoc.json
 tsconfig.app.json
 tsconfig.spec.json
 tslint.json
+/environements
 karma.conf.js
 .gitkeep
 /.history
