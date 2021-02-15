@@ -1,4 +1,6 @@
+import { Article } from './../model/article';
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../service/article.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  articles:Article[]=[];
+  constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
+    this.getAllArticle();
   }
+getAllArticle(){
+  this.articles=this.articleService.getAricles();
+}
+addCart(){
 
+  this.articleService.sendClickEvent();
+}
 }

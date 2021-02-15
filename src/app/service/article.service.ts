@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Article } from '../model/article';
 import { Souscategorie } from '../model/souscategorie';
 
@@ -7,37 +10,66 @@ import { Souscategorie } from '../model/souscategorie';
   providedIn: 'root'
 })
 export class ArticleService {
+  private baseUrl = 'http://localhost:8080/HighTech/articles';
+  cart:number=0;
+  articleget:Article[]=[];
+  art:Article =new Article(0,'','',0,'','',new Souscategorie(0,''));
   articles:Article[]=[
-    new Article("Lenovo","Lenovo",500,"Ram 8GB disque 500Gb fr:2.5","../../../../assets/images/pc/lenovo2.jpg",new Souscategorie(1,"PC Portable")),
-    new Article("Lenovo","Lenovo",500,"Ram 8GB disque 500Gb fr:2.5","../../../../assets/images/pc/mack1.jpg",new Souscategorie(1,"PC Portable")),
-    new Article("Lenovo","Lenovo",500,"Ram 8GB disque 500Gb fr:2.5","../../../../assets/images/pc/mackpro.jpg",new Souscategorie(1,"PC Portable")),
-    new Article("Lenovo","Lenovo",500,"Ram 8GB disque 500Gb fr:2.5","../../../../assets/images/pc/pc1.jpg",new Souscategorie(1,"PC Portable"))
-    // { libelle:"Lenovo",marque:"Lenovo",prix:500,description:"Ram 8GB disque 500Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo2.jpg",souscategorie:{id:7,nom:'PC Portable'}},
-    // { libelle:"Macbook",marque:"Macbook",prix:650,description:"Ram 8GB disque 500Gb fr:2.5",photo:"../../../../assets/images/pc/mack1.jpg",souscategorie:{id:8,nom:'PC Portable'}},
-    // { libelle:"Macbook pro",marque:"Macbook pro",prix:750,description:"Ram 16GB disque 500Gb fr:2.5",photo:"../../../../assets/images/pc/mackpro.jpg",souscategorie:{id:9,nom:'PC Portable'}},
-    // { libelle:"Hp",marque:"HP",prix:500,description:"Ram 16GB disque 500Gb fr:2.5",photo:"../../../../assets/images/pc/pc1.jpg",souscategorie:{id:1,nom:'PC Portable'}},
-    // { libelle:"Hp",marque:"HP",prix:600,description:"Ram 16GB disque 500Gb fr:2.5",photo:"../../../../assets/images/pc/pc2.jpg",souscategorie:{id:2,nom:'PC Portable'}},
-    // { libelle:"iphone6",marque:"Apple",prix:200,description:"Ram 4GB disque 16Gb fr:2.5",photo:"../../../../assets/images/telephones/iphone6.jpg",souscategorie:{id:3,nom:'Smart Phone'}},
-    // { libelle:"Ipone6p",marque:"Apple",prix:300,description:"Ram 8GB disque 16Gb ",photo:"../../../../assets/images/telephones/iphone6S.jpg",souscategorie:{id:4,nom:'Smart Phone'}},
-    // // { libelle:"Iphone8p",marque:"Apple",prix:350,description:"Ram 8GB disque 32Gb ",photo:"../../../../assets/images/telephones/iphone8.jpg",souscategorie:{id:5,nom:'Smart Phone'}},
-    // { libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}},
-    // { libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}},
-    // { libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}}
-    // ,{ libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}},
-    // { libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}},
-    // { libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}},
-    // { libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}},
-    // { libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}},
-    // { libelle:"Lenovo",marque:"Lenovo",prix:440,description:"Ram 8GB disque 200Gb fr:2.5",photo:"../../../../assets/images/pc/lenovo1.jpg",souscategorie:{id:6,nom:'PC Portable'}}
-
+    new Article(1,"HP","HP",500,"Ram 8GB disque 500Gb fr:2.5","../../../assets/images/ordis/bureau/b6.jpg",new Souscategorie(1,"PC Burreau")),
+    new Article(2,"HP","HP",500,"Ram 8GB disque 500Gb fr:2.5","../../../assets/images/ordis/bureau/b4.jpg",new Souscategorie(1,"PC Burreau")),
+    new Article(3,"Acer","Acer",500,"Ram 8GB disque 500Gb fr:2.5","../../../assets/images/ordis/bureau/b7.jpg",new Souscategorie(1,"PC Burreau")),
+    new Article(4,"Dell","Dell",500,"Ram 8GB disque 500Gb fr:2.5","../../../assets/images/ordis/bureau/b2.jpg",new Souscategorie(1,"PC Burreau")),
+    new Article(5,"Toshiba","Toshiba",500,"Ram 8GB disque 500Gb fr:2.5","../../../assets/images/ordis/bureau/b8.jpg",new Souscategorie(1,"PC Burreau")),
+    new Article(6,"Sony","Sony",500,"Ram 8GB disque 500Gb fr:2.5","../../../assets/images/ordis/bureau/b3.jpg",new Souscategorie(1,"PC Burreau")),
+    new Article(7,"Macbook","Macbook",650,"Ram 8GB disque 500Gb fr:2.5","../../../../assets/images/ordis/mack1.jpg",new Souscategorie(8,'PC Portable')),
+ new Article(8, "Macbook pro","Macbook pro",750,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/ordis/mackpro.jpg",new Souscategorie(9,'PC Portable')),
+   new Article(9,  "Acer","Acer",500,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/ordis/pc1.jpg",new Souscategorie(1,'PC Portable')),
+    new Article(10,"Assus","Assus",600,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/ordis/pc2.jpg",new Souscategorie(2,'PC Portable')),
+    new Article(11,"Lenovo","Lenovo",600,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/ordis/lenovo1.jpg",new Souscategorie(2,'PC Portable')),
+    new Article(12,"Iphone 11","Apple",450,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p3.jpg",new Souscategorie(2,'Smart Phone')),
+    new Article(13,"Iphone 11 pro","Apple",400,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p1.jpg",new Souscategorie(2,'Smart Phone')),
+    new Article(14,"Iphone X","Apple",300,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p2.jpg",new Souscategorie(2,'Smart Phone')),
+    new Article(15,"Iphone 11","Apple",450,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p3.jpg",new Souscategorie(2,'Smart Phone')),
+    new Article(16,"Iphone 11 pro","Apple",400,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p1.jpg",new Souscategorie(2,'Smart Phone'))
 ];
-constructor() { }
+constructor() {}//private http: HttpClient }
+// getArticleList(): Observable<any> {
+//   return this.http.get(`${this.baseUrl}`);
+// }
 getAricles(){
   return this.articles;
 }
-getArticleBySousCat(name:string){
-  return this.articles.filter(article=>{
-     article.souscategorie.nom.indexOf(name)!=-1;
-  });
+getArticleBySousCat(name:string,keySearch:string){
+  this.articleget=[];
+  this.articles.forEach(article=>{
+  if((article.marque.toLowerCase().indexOf(keySearch.toLowerCase())!=-1||
+  article.libelle.toLowerCase().indexOf(keySearch.toLowerCase())!=-1) &&
+  article.souscategorie.nom.toLowerCase().search(name.toLowerCase())!=-1)
+          this.articleget.push(article);
+});
+return this.articleget;
   }
+  getArticleByNameOrMarque(search:string,name:string){
+    return this.articles.filter(article=>{
+      return ((article.marque.toLowerCase().indexOf(search.toLowerCase())!=-1||
+      article.libelle.toLowerCase().indexOf(search.toLowerCase())!=-1) &&
+      article.souscategorie.nom.toLowerCase().search(name.toLowerCase())!=-1);
+    })
+  }
+
+private subject = new Subject<any>();
+sendClickEvent() {
+  this.subject.next();
+}
+getClickEvent(): Observable<any>{
+  return this.subject.asObservable();
+}
+
+getArticle(id:number):Article{;
+   this.articles.forEach(article=>{
+     if(article.id==id){
+       this.art=article;
+     }});
+     return this.art;
+}
 }

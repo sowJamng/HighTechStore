@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ArticleService } from '../service/article.service';
 
 @Component({
   selector: 'app-search',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
-  constructor() { }
+keySearch:string="";
+  constructor(private articleService:ArticleService) { }
 
   ngOnInit(): void {
+  }
+  onSubmit(){
+     return this.articleService.getArticleByNameOrMarque(this.keySearch,"");
   }
 
 }
