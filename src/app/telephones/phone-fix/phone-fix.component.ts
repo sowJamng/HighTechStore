@@ -12,4 +12,8 @@ export class PhoneFixComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onAddded(){
+    alert('commande aoujeté au panier avec succes')
+  }
+
 }
