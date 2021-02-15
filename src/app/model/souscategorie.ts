@@ -1,9 +1,11 @@
 export class Souscategorie {
-    id:number;
-    nom:string;
+    _id:number;
+    _nom:string;
     constructor(id:number,nom:string){
-      this.id=id;
-      this.nom=nom;
+      this._id=id;
+      this._nom=nom;
 
     }
+   public get nom(){return this._nom;}
+   public get id(){return this._id;}
 }

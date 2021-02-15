@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
+  emailvalid= [Validators.required, Validators.email];
 
-  constructor() { }
+  getErrorMessage() {
+
+    return 'email non valide';
+  }
+client={
+  email:'',
+  password:''
+};
+hide = true;
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
   }
-
+  onSubmit(){
+    this.route.navigateByUrl("/");
+  }
 }

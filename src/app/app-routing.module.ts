@@ -5,14 +5,16 @@ import { PcBureauComponent } from './pc-bureau/pc-bureau.component';
 import { PcAccessoiresComponent } from './pc-accessoires/pc-accessoires.component';
 import { HomeComponent } from './home/home.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { SmartPhoneComponent } from './telephones/smart-phone/smart-phone.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: 'app', pathMatch: 'full'},
+  {path:'', redirectTo: 'home', pathMatch: 'full'},
   {path:'PcPortable',component:PcPortableComponent},
   {path:'PcBurreau',component:PcBureauComponent},
   {path:'Accessoires',component:PcAccessoiresComponent},
   {path:'home',component:HomeComponent},
-  {path:'login',component:ConnexionComponent}
+  {path:'login',component:ConnexionComponent},
+  {path:'smartPhone',component:SmartPhoneComponent}
 ];
 
 @NgModule({

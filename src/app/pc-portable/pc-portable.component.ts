@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../model/article';
 import { ArticleService } from '../service/article.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-pc-portable',
@@ -12,12 +13,11 @@ articles:Article[]=[];
   constructor(private articleService:ArticleService) { }
 
   ngOnInit(): void {
-    this.getAllArticle();
+    //this.getAllArticle();
   }
 
-  getAllArticle(){
-   this.articles=this.articleService.getArticleBySousCat("PC Portable");
-  }
-
+  // getAllArticle(){
+  //  this.articles=this.articleService.getArticleBySousCat("Portable");
+  // }
 
 }
