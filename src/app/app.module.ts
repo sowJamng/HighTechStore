@@ -17,6 +17,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartPhoneComponent } from './telephones/smart-phone/smart-phone.component';
 import { DisplayComponent } from './article/display/display.component';
 import { DetailsComponent } from './article/details/details.component';
+import { PhoneFixComponent } from './telephones/phone-fix/phone-fix.component';
+import { AccessoiresPhoneComponent } from './telephones/accessoires-phone/accessoires-phone.component';
+import { DisqueDurComponent } from './stockage/disque-dur/disque-dur.component';
+import { CleUsbComponent } from './stockage/cle-usb/cle-usb.component';
+import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoires-stock.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { DetailsComponent } from './article/details/details.component';
     SearchComponent,
     SmartPhoneComponent,
     DisplayComponent,
-    DetailsComponent
+    DetailsComponent,
+    PhoneFixComponent,
+    AccessoiresPhoneComponent,
+    DisqueDurComponent,
+    CleUsbComponent,
+    AccessoiresStockComponent
   ],
   imports: [
     BrowserModule,
