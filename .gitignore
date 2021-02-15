@@ -45,7 +45,7 @@ testem.log
 .DS_Store
 Thumbs.db
 .editorconfig
-.browserlistrr
+.browserlistc
 package-lock.json
 package.json
 tsconfig.app.json
