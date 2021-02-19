@@ -13,11 +13,9 @@ export class PcAccessoiresComponent implements OnInit {
   constructor(private articleService:ArticleService) { }
 
   ngOnInit(): void {
-    //this.getAllArticle();
+    
   }
 
-  // getAllArticle(){
-  //  this.articles=this.articleService.getArticleBySousCat("Accessoire");
-  // }
+
 
 }

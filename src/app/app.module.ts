@@ -22,6 +22,9 @@ import { AccessoiresPhoneComponent } from './telephones/accessoires-phone/access
 import { DisqueDurComponent } from './stockage/disque-dur/disque-dur.component';
 import { CleUsbComponent } from './stockage/cle-usb/cle-usb.component';
 import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoires-stock.component';
+import { PhonesModule } from './modules/phones/phones.module';
+import { StockageModule } from './modules/stockage/stockage.module';
+import { HelloWordComponent } from './hello-word/hello-word.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoi
     AccessoiresPhoneComponent,
     DisqueDurComponent,
     CleUsbComponent,
-    AccessoiresStockComponent
+    AccessoiresStockComponent,
+    HelloWordComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,9 @@ import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoi
     FormsModule,
     RouterModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    PhonesModule,
+    StockageModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

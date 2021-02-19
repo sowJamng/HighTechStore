@@ -38,13 +38,13 @@ selectProducts:Article[]=[];
     return this.selectProducts.includes(article);
   }
   removeSelected(a:Article){
-   // this.articleService.sendClickEvent();
+  
     this.selectProducts.forEach((article,index)=>{
      if( article.id==a.id){
       this.selectProducts.splice(index,1);
       this.prixTotal-=article.prix;
       this.nbCart-=1;
-     }  //delete selectProducts[index];
+     }
     });
   }
   articleDetails(id: number){

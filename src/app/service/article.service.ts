@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
@@ -32,10 +32,7 @@ export class ArticleService {
     new Article(15,"Iphone 11","Apple",450,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p3.jpg",new Souscategorie(2,'Smart Phone')),
     new Article(16,"Iphone 11 pro","Apple",400,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p1.jpg",new Souscategorie(2,'Smart Phone'))
 ];
-constructor() {}//private http: HttpClient }
-// getArticleList(): Observable<any> {
-//   return this.http.get(`${this.baseUrl}`);
-// }
+constructor() {}
 getAricles(){
   return this.articles;
 }
