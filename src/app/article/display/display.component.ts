@@ -32,7 +32,7 @@ selectProducts:Article[]=[];
     this.articleService.sendClickEvent();
     this.showCart=true;
     this.prixTotal+=article.prix;
-    this.selectProducts.push(article)
+    this.selectProducts.push(article);
     this.nbCart++;
   }
   disbledSelected(article:Article){

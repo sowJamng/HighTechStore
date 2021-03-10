@@ -32,6 +32,8 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BoutiqueComponent } from './boutique/boutique/boutique.component';
 import { CategorieComponent } from './categorie/categorie/categorie.component';
+import { AddBoutiqueComponent } from './boutique/add-boutique/add-boutique.component';
+import { AddCategorieComponent } from './categorie/add-categorie/add-categorie.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { CategorieComponent } from './categorie/categorie/categorie.component';
     MenuComponent,
     FourOhFourComponent,
     BoutiqueComponent,
-    CategorieComponent
+    CategorieComponent,
+    AddBoutiqueComponent,
+    AddCategorieComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,9 @@ import { Contact } from "./contact";
 
 export interface Boutique {
   id:number ;
-  nom:string;
+  desc:string;
+  adress:string ;
+  email:string;
   contact:Contact;
+
 }

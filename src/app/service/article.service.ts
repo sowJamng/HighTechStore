@@ -13,6 +13,7 @@ import { Souscategorie } from '../model/souscategorie';
 export class ArticleService {
   private baseUrl = 'http://localhost:8080/HighTechShopApi/rest/articles';
   cart:number=0;
+  auth:boolean=false;
   articleget:Article[]=[];
   art:Article =new Article(0,'','',0,'','',new Souscategorie(0,''));
   articles:Article[]=[

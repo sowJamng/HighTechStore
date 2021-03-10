@@ -28,7 +28,7 @@ addCart(){
 }
 
 getJson(){
-  this.articleService.getJson().subscribe(res=>{
+  this.articleService.getAllarticles().subscribe(res=>{
     this.data=res;
     console.log(res);
   })
