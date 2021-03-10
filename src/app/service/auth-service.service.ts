@@ -38,6 +38,10 @@ export class AuthServiceService {
         }
       );
     }
+  login(adm:Admin):Observable<any>{
+    this.isAuth=true;
+    return this.http.get(this.baseUrl+'/login/'+adm.email+'/'+adm.password);
+  }
     getAdmins():Observable<any>{
       return this.http.get<any>(this.baseUrl);
     }

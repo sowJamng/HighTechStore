@@ -83,4 +83,8 @@ deleteArticle(id:number):Observable<any>{
 updateArticle(article:Article):Observable<any>{
   return this.http.put(this.baseUrl,article);
 }
+
+getJson():Observable<any>{
+  return this.http.get("https://jsonplaceholder.typicode.com/posts");
+}
 }
