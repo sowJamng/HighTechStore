@@ -25,6 +25,13 @@ import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoi
 import { PhonesModule } from './modules/phones/phones.module';
 import { StockageModule } from './modules/stockage/stockage.module';
 import { HelloWordComponent } from './hello-word/hello-word.component';
+import { AddArticleComponent } from './article/add-article/add-article.component';
+import { EditArticleComponent } from './article/edit-article/edit-article.component';
+import { MenuComponent } from './menu/menu.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BoutiqueComponent } from './boutique/boutique/boutique.component';
+import { CategorieComponent } from './categorie/categorie/categorie.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +51,13 @@ import { HelloWordComponent } from './hello-word/hello-word.component';
     DisqueDurComponent,
     CleUsbComponent,
     AccessoiresStockComponent,
-    HelloWordComponent
+    HelloWordComponent,
+    AddArticleComponent,
+    EditArticleComponent,
+    MenuComponent,
+    FourOhFourComponent,
+    BoutiqueComponent,
+    CategorieComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +67,8 @@ import { HelloWordComponent } from './hello-word/hello-word.component';
     BrowserAnimationsModule,
     MaterialModule,
     PhonesModule,
-    StockageModule
+    StockageModule,
+    HttpClientModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

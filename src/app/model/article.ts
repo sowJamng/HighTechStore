@@ -27,3 +27,10 @@ export class Article {
  public get marque(){return this._marque;}
 
 }
+
+export interface Articles {
+  id?: number;
+  marque?: string;
+  description?: string;
+  photo?: string;
+  }

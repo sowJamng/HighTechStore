@@ -12,6 +12,10 @@ import { DetailsComponent } from './article/details/details.component';
 import { AccessoiresPhoneComponent } from './telephones/accessoires-phone/accessoires-phone.component';
 import { CleUsbComponent } from './stockage/cle-usb/cle-usb.component';
 import { PhoneFixComponent } from './telephones/phone-fix/phone-fix.component';
+import { AuthontificationGuardGuard } from './guards/authontification-guard.guard';
+import { AddArticleComponent } from './article/add-article/add-article.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'home', pathMatch: 'full'},
@@ -26,7 +30,12 @@ const routes: Routes = [
   {path:'clesUSB',component:CleUsbComponent},
   {path:'telephones-fix',component:PhoneFixComponent},
   {path:'accesoires-stockage',component:AccessoiresStockComponent},
-  {path:'disqueDur',component:DisqueDurComponent}
+  {path:'disqueDur',component:DisqueDurComponent},
+  { path: 'articles', component: AddArticleComponent },
+  { path: 'not-found', component: FourOhFourComponent },
+  { path: 'admin', component: MenuComponent }, //canActivate: [ AuthontificationGuardGuard],
+  { path: '**', redirectTo: 'not-found' },
+  {path:'addArticle',component:AddArticleComponent}
 ];
 
 @NgModule({

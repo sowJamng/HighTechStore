@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-hello-word',
@@ -33,11 +34,14 @@ articles=[
 
   nombreArticles:string='1';
 nomcategorie:string="";
-
+@Input()prix: number=0;
+@Input() categorie:string="";
   constructor() { }
 
   ngOnInit(): void {
   }
+  @ViewChild(HomeComponent,{static :false}) child:HomeComponent | any;
+  ngAfterViewInit():void{console.log(this.child.categorie)}
   clique(){
     alert('vous avez cliquè sur le boutton')
   }

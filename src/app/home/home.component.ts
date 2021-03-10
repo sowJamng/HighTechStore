@@ -1,5 +1,5 @@
 import { Article } from './../model/article';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ArticleService } from '../service/article.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { ArticleService } from '../service/article.service';
 })
 export class HomeComponent implements OnInit {
 
+tab:Array<string>=['pc Portable','PC Accessoires'];
+p1=1000; p2=100;
   articles:Article[]=[];
   constructor(private articleService: ArticleService) { }
 

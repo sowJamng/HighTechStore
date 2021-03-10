@@ -1,4 +1,5 @@
 
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
@@ -10,7 +11,7 @@ import { Souscategorie } from '../model/souscategorie';
   providedIn: 'root'
 })
 export class ArticleService {
-  private baseUrl = 'http://localhost:8080/HighTech/articles';
+  private baseUrl = 'http://localhost:8080/HighTechShopApi/rest/articles';
   cart:number=0;
   articleget:Article[]=[];
   art:Article =new Article(0,'','',0,'','',new Souscategorie(0,''));
@@ -32,7 +33,7 @@ export class ArticleService {
     new Article(15,"Iphone 11","Apple",450,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p3.jpg",new Souscategorie(2,'Smart Phone')),
     new Article(16,"Iphone 11 pro","Apple",400,"Ram 16GB disque 500Gb fr:2.5","../../../../assets/images/phones/smart/p1.jpg",new Souscategorie(2,'Smart Phone'))
 ];
-constructor() {}
+constructor(private http:HttpClient) {}
 getAricles(){
   return this.articles;
 }
@@ -68,5 +69,18 @@ getArticle(id:number):Article{;
        this.art=article;
      }});
      return this.art;
+}
+
+addArticle(article:any){
+  this.http.post(this.baseUrl,article);
+}
+getAllarticles(){
+  return this.http.get(this.baseUrl);
+}
+deleteArticle(id:number):Observable<any>{
+  return this.http.delete(this.baseUrl+'/'+id);
+}
+updateArticle(article:Article):Observable<any>{
+  return this.http.put(this.baseUrl,article);
 }
 }

@@ -1,10 +1,10 @@
 
-     <nav class=" navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+     <nav  class=" navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
       <!-- navanavbar navbar-dark bg-primary -->
        <div class="container-fluid">
         <button mat-fab  color="primary"  class="navbar-brand">HighTech Shop</button>
 <a routerLink="employees" class="nav-link" routerLinkActive="active" routerLink="/"><mat-icon>home</mat-icon>Home</a>
-  <div class="btn-group">
+  <div *ngIf="!isAuth" class="btn-group">
     <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <mat-icon>laptop_chrome</mat-icon>  Ordinateurs
     </a>
@@ -14,7 +14,17 @@
       <a class="dropdown-item" routerLink="/AccessoiresPC"  routerLinkActive="clickEventHandler()">Accessoires</a>
     </div>
   </div>
-  <div class="btn-group">
+  <div *ngIf="isAuth" class="btn-group">
+    <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <mat-icon>laptop_chrome</mat-icon>produits
+    </a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" routerLink="/addArticle"  routerLinkActive="clickEventHandler()">PC Portable</a>
+      <a class="dropdown-item" routerLink="/articles"  routerLinkActive="clickEventHandler()">PC Burreau</a>
+      
+    </div>
+  </div>
+  <div *ngIf="!isAuth" class="btn-group">
     <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
      <mat-icon>app_settings_alt</mat-icon> Telephones
     </a>
@@ -24,7 +34,7 @@
       <a class="dropdown-item" routerLink="/accesoires-phones" routerLinkActive="clickEventHandler()" >Accesoires</a>
     </div>
   </div>
-  <div class="btn-group">
+  <div class="btn-group" *ngIf="!isAuth">
     <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <mat-icon>sd_storage</mat-icon> Stockage
     </a>
@@ -35,7 +45,8 @@
     </div>
   </div>
 
-  <a routerLink="/signin"  routerLinkActive="active" class=" nav-link btn " style="color: blue;" routerLink="/login"><mat-icon >account_circle</mat-icon>Se Connecter</a>
+  <a routerLink="/signin" *ngIf="!isAuth" routerLinkActive="active" class=" nav-link btn " style="color: blue;" routerLink="/login"><mat-icon >account_circle</mat-icon>Se Connecter</a>
    <a routerLink="/login" routerLinkActive="active">
     <mat-icon [matBadge]="panier" matBadgeColor="accent" matBadgeSize="small" matBadgeOverLap="false">shopping_cart</mat-icon></a>
 </div></nav>
+<!-- <app-menu *ngIf="isAuth"></app-menu> -->
