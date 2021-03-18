@@ -1,3 +1,16 @@
-p {
-  font-family: Lato;
+label{
+  font-size: 20px;
+}
+
+div.form
+{
+  display: block;
+  text-align: center;
+}
+form
+{
+  display: inline-block;
+  margin: 10%;
+
+  text-align: left;
 }

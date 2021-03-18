@@ -27,19 +27,17 @@
 <form [formGroup]="userForm" (ngSubmit)="send(userForm.value)">
   <label>Ajouter une Categorie </label>
   <br>
-  <input type="text" formControlName="name">
+  <input type="text" formControlName="name" placeholder="ex. Imprimante">
   <br>
   <br>
   <div *ngFor="let subCategory of getSubCategoriesFormControls(); let i = index">
-    <label>Sous-Categorie {{i}} </label>
-    <input [formControl]="subCategory" type="text">
-    <button (click)="removeCategory(i)">Supprimer cette sous-Categorie</button>
+    <label style="padding-right: 10px">Sous-Categorie </label>
+    <input [formControl]="subCategory" type="text"  placeholder="ex. Lazer">
+    <button (click)="removeCategory(i)" class="btn btn-info"   style="margin-left: 10px; margin-bottom: 3%">Supprimer </button>
   </div>
   <br>
-  <button (click)="addCategory()">Ajouter une Sous-Categorie</button>
-  <br>
-  <br>
-  <input type="submit">
+  <button (click)="addCategory()" class="btn btn-info"   style="margin-right: 10px">Ajouter </button>
+  <input type="submit" class="btn btn-success">
 </form>
 <br>
 
