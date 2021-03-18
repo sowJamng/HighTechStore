@@ -1,25 +1,46 @@
-<form>
-<p>Add a new catégorie</p>
-<p>
-  Saisir votre catégorie :<br />
-  <input type="text" name="categorie" value="" />
-</p>
+<!--<form>-->
+<!--<p>Add a new catégorie</p>-->
+<!--<p>-->
+<!--  Saisir votre catégorie :<br />-->
+<!--  <input type="text" name="categorie" value="" />-->
+<!--</p>-->
 
-<p>
-Choisir vos sous-catégories :<br />
-<select name="Sous-catégorie">
-  <option value="pcBur">PC Bureau</option>
-  <option value="pcPor">PC Portbale</option>
-  <option value="SmartPH">SmartPhone</option>
-  <option value="telFix">Telephone Fix</option>
-  <option value="DisDur">Disque Dur</option>
-  <option value="CleUsb">Clé USB</option>
-  <option value="access" selected="selected">Accessoires</option>
-</select>
-</p>
+<!--<p>-->
+<!--Choisir vos sous-catégories :<br />-->
+<!--<select name="Sous-catégorie">-->
+<!--  <option value="pcBur">PC Bureau</option>-->
+<!--  <option value="pcPor">PC Portbale</option>-->
+<!--  <option value="SmartPH">SmartPhone</option>-->
+<!--  <option value="telFix">Telephone Fix</option>-->
+<!--  <option value="DisDur">Disque Dur</option>-->
+<!--  <option value="CleUsb">Clé USB</option>-->
+<!--  <option value="access" selected="selected">Accessoires</option>-->
+<!--</select>-->
+<!--</p>-->
 
-<p>
-  <input type="submit" value="Valider" />
-  <input type="reset" value="Annuler" />
-</p>
+<!--<p>-->
+<!--  <input type="submit" value="Valider" />-->
+<!--  <input type="reset" value="Annuler" />-->
+<!--</p>-->
+<!--</form>-->
+
+<form [formGroup]="userForm" (ngSubmit)="send(userForm.value)">
+  <label>Ajouter une Categorie </label>
+  <br>
+  <input type="text" formControlName="name">
+  <br>
+  <br>
+  <div *ngFor="let subCategory of getSubCategoriesFormControls(); let i = index">
+    <label>Sous-Categorie {{i}} </label>
+    <input [formControl]="subCategory" type="text">
+    <button (click)="removeCategory(i)">Supprimer cette sous-Categorie</button>
+  </div>
+  <br>
+  <button (click)="addCategory()">Ajouter une Sous-Categorie</button>
+  <br>
+  <br>
+  <input type="submit">
 </form>
+<br>
+
+{{userForm.value | json}}

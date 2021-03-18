@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ArticleService } from './service/article.service';
 import { SearchComponent } from './search/search.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartPhoneComponent } from './telephones/smart-phone/smart-phone.component';
@@ -72,7 +72,8 @@ import { AddCategorieComponent } from './categorie/add-categorie/add-categorie.c
     MaterialModule,
     PhonesModule,
     StockageModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]
