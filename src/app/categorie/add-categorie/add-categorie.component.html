@@ -24,21 +24,33 @@
 <!--</p>-->
 <!--</form>-->
 
+<div class ="container">
+  <H1>Ajouter Une Catégorie de produits</H1>
 <form [formGroup]="userForm" (ngSubmit)="send(userForm.value)">
+  <div class="mb-3">
+    <select class="custom-select" >
+      <option value="">choisissez votre produit</option>
+      <option *ngFor="let produit of Produits" [ngValue]="produit">{{produit}}</option>
+    </select>
+  </div>
   <label>Ajouter une Categorie </label>
   <br>
-  <input type="text" formControlName="name" placeholder="ex. Imprimante">
+    <input class="form-control" type="text" formControlName="category" placeholder="ex. Tablette" ngModel pattern="[a-zA-Z ]*">
   <br>
   <br>
+
   <div *ngFor="let subCategory of getSubCategoriesFormControls(); let i = index">
-    <label style="padding-right: 10px">Sous-Categorie </label>
-    <input [formControl]="subCategory" type="text"  placeholder="ex. Lazer">
-    <button (click)="removeCategory(i)" class="btn btn-info"   style="margin-left: 10px; margin-bottom: 3%">Supprimer </button>
+    <div class="subCat">
+    <label style="padding-right: 10px">Ajouter une Sous-Categorie </label>
+    <input  [formControl]="subCategory" type="text"  placeholder="ex. iPad">
+    <button (click)="removeCategory(i)" class="btn btn-danger btn-sm"   style="margin-left: 10px; ">Supprimer </button>
   </div>
+</div>
   <br>
   <button (click)="addCategory()" class="btn btn-info"   style="margin-right: 10px">Ajouter </button>
-  <input type="submit" class="btn btn-success">
+  <input type="submit" class="btn btn-success" [disabled]="!userForm.valid">
 </form>
 <br>
 
 {{userForm.value | json}}
+</div>

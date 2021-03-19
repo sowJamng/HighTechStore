@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-categorie',
@@ -8,17 +8,21 @@ import {AbstractControl, FormArray, FormBuilder, FormGroup} from '@angular/forms
 })
 export class AddCategorieComponent implements OnInit {
 
-  name = '';
+  category = '';
   userForm: FormGroup;
+  // Product Names
+  Produits: any = ['Ordinateur', 'Telephonie', 'Accessoire', 'Stockage'];
+
   constructor(
     private fb: FormBuilder
   ) {
     this.userForm = this.fb.group({
-      name: [],
+      productName: [],
+      category: ['',[Validators.required]],
       subCategories: this.fb.array([
-        this.fb.control(null)
+        this.fb.control('',[Validators.required]),
       ])
-    })
+    });
   }
 
   addCategory(): void {
@@ -32,13 +36,29 @@ export class AddCategorieComponent implements OnInit {
   }
 
   getSubCategoriesFormControls(): AbstractControl[] {
-    return (<FormArray> this.userForm.get('subCategories')).controls
+    return (<FormArray> this.userForm.get('subCategories')).controls;
   }
 
   send(values: any) {
     console.log(values);
   }
 
+  // // Choose city using select dropdown
+  // changeCity(e) {
+  //   console.log(e.value);
+  //   this.cityName.setValue(e.target.value, {
+  //     onlySelf: true
+  //   });
+  // }
+
+  // Getter method to access formcontrols
+  // get cityName() {
+  //   return this.registrationForm.get('cityName');
+  // }
   ngOnInit(): void {
+  }
+
+  changeCity($event: Event) {
+
   }
 }
