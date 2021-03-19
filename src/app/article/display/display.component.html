@@ -17,14 +17,14 @@
         <p class="card-text">{{article.description}}</p>
         <button (click)="articleDetails(article.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
       </div>
-         <div class="card-footer">
+      <div class="card-footer">
           <button mat-mini-fab color="accent" [disabled]="disbledSelected(article)"
           [matBadgeHidden]="!disbledSelected(article)" matBadgeOverlap="true" matBadgeColor="primary" [matBadge]="'+'" (click)="addCart(article)" aria-label=" plus one icon">
           <mat-icon>add_shopping_cart</mat-icon>+
         </button>
-      </div>
     </div>
   </div>
+</div>
 </div>
 <div class="col-md-3 "  *ngIf="showCart" >
   <div class=" col md-2 col mb-1"  >

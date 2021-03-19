@@ -12,6 +12,7 @@ export class DisplayComponent implements OnInit {
   @Input() key: string="";
  keySearch:string="";
   articles:Article[]=[];
+  data:any;
 showCart:boolean=false;
 prixTotal:number=0;
 nbCart:number=0;
@@ -20,7 +21,7 @@ selectProducts:Article[]=[];
 
   ngOnInit(): void {
     this.getAllArticle();
-  //  reloadData()
+    this.reloadArticle();
   }
 
   getAllArticle(){
@@ -31,27 +32,32 @@ selectProducts:Article[]=[];
     this.articleService.sendClickEvent();
     this.showCart=true;
     this.prixTotal+=article.prix;
-    this.selectProducts.push(article)
+    this.selectProducts.push(article);
     this.nbCart++;
   }
   disbledSelected(article:Article){
     return this.selectProducts.includes(article);
   }
   removeSelected(a:Article){
-   // this.articleService.sendClickEvent();
+  
     this.selectProducts.forEach((article,index)=>{
      if( article.id==a.id){
       this.selectProducts.splice(index,1);
       this.prixTotal-=article.prix;
       this.nbCart-=1;
-     }  //delete selectProducts[index];
+     }
     });
   }
   articleDetails(id: number){
     this.router.navigate(['details', id]);
   }
-  // reloadData() {
-  //   this.articles = this.articleService.getArticleList();
-  // }
+  reloadArticle(){
+    this.articleService.getAllarticles().subscribe(articles =>
+      {
+               this.data=articles;
+               console.log(this.data);
+        }, 
+      err=>console.log(err));
+  }
 
 }
