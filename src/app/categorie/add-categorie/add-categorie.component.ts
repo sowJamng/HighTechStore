@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {CategoriesService} from '../../service/categories.service';
 
 @Component({
   selector: 'app-add-categorie',
@@ -12,9 +13,11 @@ export class AddCategorieComponent implements OnInit {
   userForm: FormGroup;
   // Product Names
   Produits: any = ['Ordinateur', 'Telephonie', 'Accessoire', 'Stockage'];
+  // Produits: any = this.category;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private categoriesService : CategoriesService
   ) {
     this.userForm = this.fb.group({
       productName: [],
@@ -41,6 +44,11 @@ export class AddCategorieComponent implements OnInit {
 
   send(values: any) {
     console.log(values);
+    console.log(this.categoriesService.getCategories());
+    this.categoriesService.getCategories().subscribe((category) => {
+      this.category=category;
+     console.log(this.category)
+    });
   }
 
   // // Choose city using select dropdown
@@ -56,6 +64,7 @@ export class AddCategorieComponent implements OnInit {
   //   return this.registrationForm.get('cityName');
   // }
   ngOnInit(): void {
+
   }
 
   changeCity($event: Event) {

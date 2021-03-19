@@ -1,4 +1,4 @@
-import { ScategoriesService } from '../service/scategories.service';
+import { CategoriesService } from '../service/categories.service';
 export class Souscategorie {
     _id:number;
     _nom:string;
