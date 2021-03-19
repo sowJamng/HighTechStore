@@ -19,7 +19,7 @@ export class AddArticleComponent implements OnInit {
 
   constructor(private articleService: ArticleService) {}
   ngOnInit() {
-  }r
+  }
   onAddArticle(value: any) {
     this.articleService.addArticle(value);
  }
