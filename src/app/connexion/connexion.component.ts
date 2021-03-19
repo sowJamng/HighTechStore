@@ -56,10 +56,11 @@ onLogin() {
       console.log("connexion reussit avec succes ");
       this.authService.isAuth=true;
       this.authStatus = this.authService.isAuth;
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/admin');//admin
     }
-    else
+    else {
     alert("veuillez revoir votre email et mot de passe");
+    }
   }, 
   err=>console.log(err)
   );

@@ -34,6 +34,7 @@ import { BoutiqueComponent } from './boutique/boutique/boutique.component';
 import { CategorieComponent } from './categorie/categorie/categorie.component';
 import { AddBoutiqueComponent } from './boutique/add-boutique/add-boutique.component';
 import { AddCategorieComponent } from './categorie/add-categorie/add-categorie.component';
+import { ListArticleComponent } from './article/list-article/list-article.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AddCategorieComponent } from './categorie/add-categorie/add-categorie.c
     BoutiqueComponent,
     CategorieComponent,
     AddBoutiqueComponent,
-    AddCategorieComponent
+    AddCategorieComponent,
+    ListArticleComponent
   ],
   imports: [
     BrowserModule,
