@@ -1,3 +1,4 @@
+import { ScategoriesService } from '../service/scategories.service';
 export class Souscategorie {
     _id:number;
     _nom:string;
@@ -8,4 +9,9 @@ export class Souscategorie {
     }
    public get nom(){return this._nom;}
    public get id(){return this._id;}
+}
+
+export interface Scategorie{
+  id:number;
+  nom:string;
 }
