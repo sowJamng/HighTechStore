@@ -37,7 +37,7 @@
   <div *ngFor="let subCategory of getSubCategoriesFormControls(); let i = index">
     <div class="subCat">
     <label style="padding-right: 10px">Ajouter une Sous-Categorie </label>
-    <input  [formControl]="subCategory" type="text"  placeholder="ex. PC Ultra portable">
+    <input  [formControl]="subCategory" type="text"  placeholder="ex. PC Portable">
     <button (click)="removeCategory(i)" class="btn btn-danger btn-sm"   style="margin-left: 10px; ">Supprimer </button>
   </div>
 </div>

@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CategoriesService} from '../../service/categories.service';
-import {map, tap} from 'rxjs/operators';
-import {Categorie, SousCategorie} from '../../model/Categorie';
-import {Observable} from 'rxjs';
+import {Categorie} from '../../model/Categorie';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-categorie',
@@ -11,7 +10,6 @@ import {Observable} from 'rxjs';
   styleUrls: ['./add-categorie.component.css']
 })
 export class AddCategorieComponent implements OnInit {
-  product='';
   userForm: FormGroup;
   // Product Names
   //Produits: any = ['Ordinateur', 'Telephonie', 'Accessoire', 'Stockage'];
@@ -21,6 +19,8 @@ export class AddCategorieComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private categoriesService : CategoriesService,
+    private router : Router,
+
   ) {
     this.userForm = this.fb.group({
       categorie: ['',[Validators.required]],
@@ -29,10 +29,7 @@ export class AddCategorieComponent implements OnInit {
       ])
     });
   }
-  /*getCategories():Observable<Categorie[]>{
-    return this.categoriesService.getCategories().pipe(map(categories =>
-      categories.filter(categorie => categorie.parent != null && categorie.parent.name == 'Tous')));
-  }*/
+
   addCategory(): void {
     (this.userForm.get('subCategories') as FormArray).push(
       this.fb.control(null)
@@ -55,29 +52,17 @@ export class AddCategorieComponent implements OnInit {
     this.categoriesService.postNewCategory(selectCategory.id, selectSubCategories)
       .subscribe(data => {
         console.log("DATA", data);
+        window.alert("ajout avec succes")
+      //  this.router.navigate(['./categories']);
       }, error => {
         console.log("ERR", error);
       });
 ;
   }
 
-  // // Choose city using select dropdown
-  // changeCity(e) {
-  //   console.log(e.value);
-  //   this.cityName.setValue(e.target.value, {
-  //     onlySelf: true
-  //   });
-  // }
 
-  // Getter method to access formcontrols
-  // get cityName() {
-  //   return this.registrationForm.get('cityName');
-  // }
   ngOnInit(): void {
     this.categoriesService.getCategories().subscribe(categories => this.categories=categories)
   }
 
-  changeCity($event: Event) {
-
-  }
 }

@@ -43,7 +43,8 @@ const routes: Routes = [
   {path:'addBoutique',component:AddBoutiqueComponent },
   // {path:'addCategorie',component:AddCategorieComponent, canActivate: [ AuthontificationGuardGuard]},
   {path:'addCategorie',component:AddCategorieComponent},
-  {path:'categories',component:CategorieComponent, canActivate: [ AuthontificationGuardGuard]},
+  // {path:'categories',component:CategorieComponent, canActivate: [ AuthontificationGuardGuard]},
+  {path:'categories',component:CategorieComponent},
   {path:'boutiques',component:BoutiqueComponent},
   {path:'addArticle',component:AddArticleComponent, canActivate: [ AuthontificationGuardGuard]}
 ];
