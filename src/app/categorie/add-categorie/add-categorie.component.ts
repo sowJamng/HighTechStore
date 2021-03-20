@@ -29,9 +29,10 @@ export class AddCategorieComponent implements OnInit {
       ])
     });
   }
-  getCategories():Observable<Categorie[]>{
-    return this.categoriesService.getCategories().pipe(map(categories => categories.filter(categorie => categorie.parent != null && categorie.parent.name == 'Tous')));
-  }
+  /*getCategories():Observable<Categorie[]>{
+    return this.categoriesService.getCategories().pipe(map(categories =>
+      categories.filter(categorie => categorie.parent != null && categorie.parent.name == 'Tous')));
+  }*/
   addCategory(): void {
     (this.userForm.get('subCategories') as FormArray).push(
       this.fb.control(null)
@@ -73,7 +74,7 @@ export class AddCategorieComponent implements OnInit {
   //   return this.registrationForm.get('cityName');
   // }
   ngOnInit(): void {
-    this.getCategories().subscribe(categories => this.categories=categories)
+    this.categoriesService.getCategories().subscribe(categories => this.categories=categories)
   }
 
   changeCity($event: Event) {

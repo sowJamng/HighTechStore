@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Categorie} from '../model/Categorie';
+import {map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class CategoriesService {
   constructor(private http: HttpClient) {
   }
 
-  getCategories(): Observable<Categorie[]>{
+  getAllCategories(): Observable<Categorie[]>{
     return this.http.get<Categorie[]>(this.rootUrl + '/categories');
   }
 
@@ -31,5 +32,17 @@ export class CategoriesService {
     };
     console.log("request body = ", requestBody);
     return this.http.post<Categorie[]>(this.rootUrl+'/add', requestBody);
+  }
+
+  // service qui renvoie la liste des catégories
+  getCategories():Observable<Categorie[]>{
+    return this.getAllCategories().pipe(map(categories =>
+      categories.filter(categorie => categorie.parent != null && categorie.parent.name == 'Tous')));
+  }
+
+  // service qui renvoie la liste des sous-catégories
+  getSubCategories():Observable<Categorie[]>{
+    return this.getAllCategories().pipe(map(categories =>
+      categories.filter(categorie => categorie.parent != null && categorie.parent.name != 'Tous')));
   }
 }
