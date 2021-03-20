@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
+import {Categorie} from '../model/Categorie';
 
 
 @Injectable({
@@ -9,14 +10,26 @@ import {Observable} from 'rxjs';
 export class CategoriesService {
   readonly rootUrl = 'http://localhost:8080/shop/rest/category';
 
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin':'*'
+    })
+  };
+
   constructor(private http: HttpClient) {
   }
 
-  getCategories(): Observable<any>{
-    return this.http.get<any>(this.rootUrl+'/categories');
+  getCategories(): Observable<Categorie[]>{
+    return this.http.get<Categorie[]>(this.rootUrl + '/categories');
   }
 
-  postNewCategory(selectedParent: number, categoryName:String, subcategories:String[]) : Observable<any>{
-    return this.http.post<any>(this.rootUrl+ '/'+ selectedParent+'/match/'+categoryName, subcategories);
+  postNewCategory(selectedParent: number, subcategories:String[]) : Observable<any>{
+    const requestBody = {
+      idParent: selectedParent,
+      listeSousCategories: subcategories,
+
+    };
+    console.log("request body = ", requestBody);
+    return this.http.post<Categorie[]>(this.rootUrl+'/add', requestBody);
   }
 }

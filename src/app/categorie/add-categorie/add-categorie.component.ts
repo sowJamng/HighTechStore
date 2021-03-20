@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CategoriesService} from '../../service/categories.service';
+import {map, tap} from 'rxjs/operators';
+import {Categorie, SousCategorie} from '../../model/Categorie';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-add-categorie',
@@ -9,25 +12,26 @@ import {CategoriesService} from '../../service/categories.service';
 })
 export class AddCategorieComponent implements OnInit {
   product='';
-  category = '';
   userForm: FormGroup;
   // Product Names
-  Produits: any = ['Ordinateur', 'Telephonie', 'Accessoire', 'Stockage'];
-  // Produits: any = this.category;
+  //Produits: any = ['Ordinateur', 'Telephonie', 'Accessoire', 'Stockage'];
+  categories: Categorie[] = [];
+
 
   constructor(
     private fb: FormBuilder,
-    private categoriesService : CategoriesService
+    private categoriesService : CategoriesService,
   ) {
     this.userForm = this.fb.group({
-      productName: [''],
-      category: ['',[Validators.required]],
+      categorie: ['',[Validators.required]],
       subCategories: this.fb.array([
         this.fb.control('',[Validators.required]),
       ])
     });
   }
-
+  getCategories():Observable<Categorie[]>{
+    return this.categoriesService.getCategories().pipe(map(categories => categories.filter(categorie => categorie.parent != null && categorie.parent.name == 'Tous')));
+  }
   addCategory(): void {
     (this.userForm.get('subCategories') as FormArray).push(
       this.fb.control(null)
@@ -42,13 +46,18 @@ export class AddCategorieComponent implements OnInit {
     return (<FormArray> this.userForm.get('subCategories')).controls;
   }
 
-  send(values: any) {
-    console.log(values);
-    console.log(this.categoriesService.getCategories());
-    this.categoriesService.getCategories().subscribe((category) => {
-     //  this.category=category;
-     // console.log(this.category)
-    });
+  send() {
+    let selectCategory = this.userForm.value.categorie;
+    let selectSubCategories = this.userForm.value.subCategories;
+    console.log(selectCategory);
+    console.log(selectSubCategories);
+    this.categoriesService.postNewCategory(selectCategory.id, selectSubCategories)
+      .subscribe(data => {
+        console.log("DATA", data);
+      }, error => {
+        console.log("ERR", error);
+      });
+;
   }
 
   // // Choose city using select dropdown
@@ -64,7 +73,7 @@ export class AddCategorieComponent implements OnInit {
   //   return this.registrationForm.get('cityName');
   // }
   ngOnInit(): void {
-
+    this.getCategories().subscribe(categories => this.categories=categories)
   }
 
   changeCity($event: Event) {

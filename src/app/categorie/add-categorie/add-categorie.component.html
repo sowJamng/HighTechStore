@@ -25,24 +25,19 @@
 <!--</form>-->
 
 <div class ="container">
-  <H1>Ajouter une catégorie de produits</H1>
-<form [formGroup]="userForm" (ngSubmit)="send(userForm.value)">
+  <H1>Ajouter une sous catégorie d'article</H1>
+<form [formGroup]="userForm" (ngSubmit)="send()">
   <div class="mb-3">
-    <select class="custom-select" formControlName="productName">
-      <option value="">choisissez votre produit</option>
-      <option *ngFor="let productName of Produits" [ngValue]="productName">{{productName}}</option>
+    <select class="custom-select" formControlName="categorie">
+      <option value="">choisissez une catégorie</option>
+      <option *ngFor="let categorie of categories" [ngValue]="categorie">{{categorie.name}}</option>
     </select>
   </div>
-  <label>Ajouter une Categorie </label>
-  <br>
-    <input class="form-control" type="text" formControlName="category" placeholder="ex. Tablette" ngModel pattern="[a-zA-Z ]*">
-  <br>
-  <br>
 
   <div *ngFor="let subCategory of getSubCategoriesFormControls(); let i = index">
     <div class="subCat">
     <label style="padding-right: 10px">Ajouter une Sous-Categorie </label>
-    <input  [formControl]="subCategory" type="text"  placeholder="ex. iPad">
+    <input  [formControl]="subCategory" type="text"  placeholder="ex. PC Ultra portable">
     <button (click)="removeCategory(i)" class="btn btn-danger btn-sm"   style="margin-left: 10px; ">Supprimer </button>
   </div>
 </div>
