@@ -16,6 +16,11 @@ import { AuthontificationGuardGuard } from './guards/authontification-guard.guar
 import { AddArticleComponent } from './article/add-article/add-article.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { MenuComponent } from './menu/menu.component';
+import { ListArticleComponent } from './article/list-article/list-article.component';
+import { AddBoutiqueComponent } from './boutique/add-boutique/add-boutique.component';
+import { BoutiqueComponent } from './boutique/boutique/boutique.component';
+import { AddCategorieComponent } from './categorie/add-categorie/add-categorie.component';
+import { CategorieComponent } from './categorie/categorie/categorie.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'home', pathMatch: 'full'},
@@ -31,11 +36,15 @@ const routes: Routes = [
   {path:'telephones-fix',component:PhoneFixComponent},
   {path:'accesoires-stockage',component:AccessoiresStockComponent},
   {path:'disqueDur',component:DisqueDurComponent},
-  { path: 'articles', component: AddArticleComponent },
+  { path: 'articleslist', component: ListArticleComponent , canActivate: [ AuthontificationGuardGuard]},
   { path: 'not-found', component: FourOhFourComponent },
-  { path: 'admin', component: MenuComponent }, //canActivate: [ AuthontificationGuardGuard],
-  { path: '**', redirectTo: 'not-found' },
-  {path:'addArticle',component:AddArticleComponent}
+  { path: 'admin', component: MenuComponent , canActivate: [ AuthontificationGuardGuard]},
+  // { path: '**', redirectTo: 'not-found' },
+  {path:'addBoutique',component:AddBoutiqueComponent },
+  {path:'addCategorie',component:AddCategorieComponent, canActivate: [ AuthontificationGuardGuard]},
+  {path:'categories',component:CategorieComponent, canActivate: [ AuthontificationGuardGuard]},
+  {path:'boutiques',component:BoutiqueComponent},
+  {path:'addArticle',component:AddArticleComponent, canActivate: [ AuthontificationGuardGuard]}
 ];
 
 @NgModule({
