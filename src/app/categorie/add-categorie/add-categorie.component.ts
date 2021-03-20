@@ -8,7 +8,7 @@ import {CategoriesService} from '../../service/categories.service';
   styleUrls: ['./add-categorie.component.css']
 })
 export class AddCategorieComponent implements OnInit {
-
+  product='';
   category = '';
   userForm: FormGroup;
   // Product Names
@@ -20,7 +20,7 @@ export class AddCategorieComponent implements OnInit {
     private categoriesService : CategoriesService
   ) {
     this.userForm = this.fb.group({
-      productName: [],
+      productName: [''],
       category: ['',[Validators.required]],
       subCategories: this.fb.array([
         this.fb.control('',[Validators.required]),
@@ -46,8 +46,8 @@ export class AddCategorieComponent implements OnInit {
     console.log(values);
     console.log(this.categoriesService.getCategories());
     this.categoriesService.getCategories().subscribe((category) => {
-      this.category=category;
-     console.log(this.category)
+     //  this.category=category;
+     // console.log(this.category)
     });
   }
 
