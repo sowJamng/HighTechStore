@@ -1,13 +1,4 @@
-<label>Liste des Categories </label>
-<br>
-{{categories | json}}
-<br>
-<br>
-<label>Liste des sous Categories </label>
-<br>
-{{subCategories | json}}
-
-
+<!--
 <form>
   <label>Liste des Categories </label>
   <p>
@@ -48,9 +39,36 @@
       <option value="access" selected="selected">Accessoires</option>
     </select>
   </p>
-
-
   <p>
-    <input  class="btn btn-info" type="reset" value="Annuler" />
+    <input class="btn btn-info" type="reset" value="Annuler"/>
   </p>
 </form>
+-->
+
+
+<div class=container style="width: 40%">
+  <label>Liste des Categories </label>
+  <br>
+  <br>
+  <br>
+  <div>
+    <label>Ordinateurs</label>
+    <select class="custom-select" (select)="hello">
+      <option *ngFor="let subOrdi of subCategoriesOrdi" [ngValue]="subOrdi">{{subOrdi.name}}</option>
+    </select>
+  </div>
+  <br>
+  <div>
+    <label>Telephones</label>
+    <select class="custom-select" (select)="hello">
+      <option *ngFor="let subTel of subCategoriesTel" [ngValue]="subTel">{{subTel.name}}</option>
+    </select>
+  </div>
+  <br>
+  <div>
+    <label>Stockages</label>
+    <select class="custom-select" (select)="hello">
+      <option *ngFor="let subStock of subCategoriesStock" [ngValue]="subStock">{{subStock.name}}</option>
+    </select>
+  </div>
+</div>

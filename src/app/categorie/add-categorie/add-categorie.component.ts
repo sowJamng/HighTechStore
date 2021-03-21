@@ -53,7 +53,7 @@ export class AddCategorieComponent implements OnInit {
       .subscribe(data => {
         console.log("DATA", data);
         window.alert("ajout avec succes")
-      //  this.router.navigate(['./categories']);
+       this.router.navigate(['./categories']);
       }, error => {
         console.log("ERR", error);
       });
