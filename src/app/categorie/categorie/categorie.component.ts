@@ -3,7 +3,7 @@ import {CategoriesService} from '../../service/categories.service';
 import {Categorie} from '../../model/Categorie';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-categorie',
@@ -11,12 +11,18 @@ import {FormBuilder, Validators} from '@angular/forms';
   styleUrls: ['./categorie.component.css']
 })
 export class CategorieComponent implements OnInit {
+  userForm!: FormGroup;
   subCategoriesOrdi: Categorie[] = [];
   subCategoriesTel: Categorie[] = [];
   subCategoriesStock: Categorie[] = [];
   hello ="hello"
 
   constructor( private categoriesService : CategoriesService,) {
+  }
+
+  // tslint:disable-next-line:typedef
+  suppSousCat(id: number) {
+    (this.userForm.get('subCategories') as FormArray).removeAt(id);
   }
 
   ngOnInit(): void {

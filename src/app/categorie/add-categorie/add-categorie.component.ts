@@ -18,8 +18,8 @@ export class AddCategorieComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private categoriesService : CategoriesService,
-    private router : Router,
+    private categoriesService: CategoriesService,
+    private router: Router,
 
   ) {
     this.userForm = this.fb.group({

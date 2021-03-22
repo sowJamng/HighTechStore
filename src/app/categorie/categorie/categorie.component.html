@@ -55,8 +55,13 @@
     <label>Ordinateurs</label>
     <select class="custom-select" (select)="hello">
       <option *ngFor="let subOrdi of subCategoriesOrdi" [ngValue]="subOrdi">{{subOrdi.name}}</option>
+      <div *ngIf=" let i = index">
+        <button (click)="suppSousCat(i)" class="btn btn-danger btn-sm"   style="margin-left: 10px; ">Supprimer la sélection </button>
+      </div>
     </select>
+
   </div>
+
   <br>
   <div>
     <label>Telephones</label>

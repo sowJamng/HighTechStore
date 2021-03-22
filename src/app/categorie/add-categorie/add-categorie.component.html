@@ -35,12 +35,12 @@
   </div>
 
   <div *ngFor="let subCategory of getSubCategoriesFormControls(); let i = index">
-    <div class="subCat">
+   <div class="subCat">
     <label style="padding-right: 10px">Ajouter une Sous-Categorie </label>
     <input  [formControl]="subCategory" type="text"  placeholder="ex. PC Portable">
     <button (click)="removeCategory(i)" class="btn btn-danger btn-sm"   style="margin-left: 10px; ">Supprimer </button>
+   </div>
   </div>
-</div>
   <br>
   <button (click)="addCategory()" class="btn btn-info"   style="margin-right: 10px">Ajouter </button>
   <input type="submit" class="btn btn-success" [disabled]="!userForm.valid">
