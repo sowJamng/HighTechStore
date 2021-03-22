@@ -8,11 +8,11 @@ import { Admin } from '../model/admin';
 })
 export class AuthServiceService {
   isAuth = false;
-   admin:Admin= {
-     email:'maodosowdev7@gmail.com',
-     password:'maodo7'
-   };
-     baseUrl:string="http://localhost:8080/HighTechShopApi/rest/admin";
+   // admin:Admin= {
+   //   email:'maodosowdev7@gmail.com',
+   //   password:'maodo7'
+   // };
+     baseUrl:string="http://localhost:8080/shop/rest/admin";
 
      constructor(private http:HttpClient) { }
      signIn(adm: Admin){
@@ -54,7 +54,7 @@ export class AuthServiceService {
     getClickAuth(){
       return this.isAuth;
     }
-  
+
 
 
 }

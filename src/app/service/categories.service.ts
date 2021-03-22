@@ -1,15 +1,23 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
+import {Categorie} from '../model/Categorie';
+import {map} from 'rxjs/operators';
 import { Categories } from '../model/categories';
 
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class CategoriesService {
+  readonly rootUrl = 'http://localhost:8080/shop/rest/category';
+
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin':'*'
+    })
+  };
+
   baseUrl ="http://localhost:8080/HighTechShopApi/rest/categories";
 
   constructor(private http:HttpClient) { }
@@ -27,5 +35,32 @@ export class CategoriesService {
 
   deleteCategorie(id:number){
     this.http.delete(this.baseUrl+'/'+id);
+
+
+  getAllCategories(): Observable<Categorie[]>{
+    return this.http.get<Categorie[]>(this.rootUrl + '/categories');
+  }
+
+  postNewCategory(selectedParent: number, subcategories:String[]) : Observable<any>{
+    const requestBody = {
+      idParent: selectedParent,
+      listeSousCategories: subcategories,
+
+    };
+    console.log("request body = ", requestBody);
+    return this.http.post<Categorie[]>(this.rootUrl+'/add', requestBody);
+  }
+
+  // service qui renvoie la liste des catégories
+  getCategories():Observable<Categorie[]>{
+    return this.getAllCategories().pipe(map(categories =>
+      categories.filter(categorie => categorie.parent != null && categorie.parent.name == 'Tous')));
+  }
+
+  // service qui renvoie la liste des sous-catégories
+  getSubCategories():Observable<Categorie[]>{
+    return this.getAllCategories().pipe(map(categories =>
+      categories.filter(categorie => categorie.parent != null && categorie.parent.name != 'Tous')));
+
   }
 }
