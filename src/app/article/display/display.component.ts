@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/model/article';
-import { ArticleService } from 'src/app/service/article.service';
+import { Articles } from 'src/app/model/articles';
+import { ArticlesService } from 'src/app/service/articles.service';
 
 @Component({
   selector: 'app-display',
@@ -12,20 +13,25 @@ export class DisplayComponent implements OnInit {
   @Input() key: string="";
  keySearch:string="";
   articles:Article[]=[];
+  allarticles:Articles[]=[];
   data:any;
 showCart:boolean=false;
 prixTotal:number=0;
 nbCart:number=0;
+panier:Articles[]=[];
 selectProducts:Article[]=[];
-  constructor(private router:Router, private articleService:ArticleService) { }
+  constructor(private router:Router,private articleService: ArticlesService ) { }
 
   ngOnInit(): void {
     this.getAllArticle();
-    this.reloadArticle();
+
   }
 
   getAllArticle(){
-   this.articles=this.articleService.getArticleBySousCat(this.key,this.keySearch);
+   this.articleService.getArticleBySousCat( this.key).subscribe(data=>{
+    this.articles=data;
+    console.log(this.articles);
+   },err=>console.log(err))
   }
 
    addCart(article:Article){
@@ -39,7 +45,7 @@ selectProducts:Article[]=[];
     return this.selectProducts.includes(article);
   }
   removeSelected(a:Article){
-  
+
     this.selectProducts.forEach((article,index)=>{
      if( article.id==a.id){
       this.selectProducts.splice(index,1);
@@ -51,13 +57,15 @@ selectProducts:Article[]=[];
   articleDetails(id: number){
     this.router.navigate(['details', id]);
   }
-  reloadArticle(){
-    this.articleService.getAllarticles().subscribe(articles =>
-      {
-               this.data=articles;
-               console.log(this.data);
-        }, 
-      err=>console.log(err));
+
+getArticleByQuery(){
+  if(this.keySearch===" ") this.getAllArticle();
+  this.articleService.getArticleByMarque(this.keySearch).subscribe(data=>{
+    this.articles=data;
+  },err=>console.log(err));
+}
+  commander(){
+     alert('commande efectuée avec succés');
   }
 
 }

@@ -72,20 +72,5 @@ getArticle(id:number):Article{;
      return this.art;
 }
 
-addArticle(article:any){
-  this.http.post(this.baseUrl,article);
-}
-getAllarticles(){
-  return this.http.get(this.baseUrl);
-}
-deleteArticle(id:number):Observable<any>{
-  return this.http.delete(this.baseUrl+'/'+id);
-}
-updateArticle(article:Article):Observable<any>{
-  return this.http.put(this.baseUrl,article);
-}
 
-getJson():Observable<any>{
-  return this.http.get("https://jsonplaceholder.typicode.com/posts");
-}
 }

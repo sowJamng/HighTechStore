@@ -5,7 +5,7 @@ import { Souscategorie } from "./souscategorie";
 export interface Articles {
     id:number;
     libelle:string;
-    marque:Marque ;
+    marque:string ;
     prix:number;
     categorie:Souscategorie;
     photo:string;

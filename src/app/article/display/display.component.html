@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="form-inline offset-5 my-2 my-lg-0" #f="ngForm" (ngSubmit)="  getAllArticle()">
+  <form class="form-inline offset-5 my-2 my-lg-0" #f="ngForm" (ngSubmit)="  getArticleByQuery()">
   <input class="form-control mr-sm-2" type="search" [(ngModel)]="keySearch" [ngModelOptions]="{standalone: true}" keySearch="ngModel" placeholder="rechercher par marque" aria-label="Search">
   <button *ngIf="f.submitted"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Recharger</button>
   <button *ngIf="!f.submitted"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
@@ -48,7 +48,7 @@
       </div>
          <div class="card-footer text-center">
 
-          <button mat-button color="accent" routerLink="/login">Commander</button>
+          <button mat-button color="accent" routerLink="/login" (onClick)="commander()">Commander</button>
        </div>
       </div>
     </div>

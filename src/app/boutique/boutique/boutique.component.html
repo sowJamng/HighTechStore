@@ -1,1 +1,24 @@
-<p>boutiqes</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">description</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr   *ngFor="let boutique of boutiques; let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{boutique.desc}}</td>
+      <td>{{boutique.adress}}</td>
+      <td>{{boutique.phone}}</td>
+      <td>{{boutique.email}}</td>
+      <td class="btn btn-danger"  (click)="onDeleteBoutique(boutique.id)">Supprimer</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td class="btn btn-success"  (click)="onUpdateBoutique(boutique)">Modifier</td>
+    </tr>
+
+  </tbody>
+</table>

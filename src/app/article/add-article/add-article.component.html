@@ -15,7 +15,7 @@
     <input class="form-control" type="text" name="marque"  ngModel>
      </div>
    <div class="form-group">
-  <label class="control-label">Prx</label>
+  <label class="control-label">Prix</label>
   <input class="form-control" type="text" name="price"  ngModel>
    </div>
    <div class="form-group"  >
@@ -23,7 +23,7 @@
     <input class="form-control" type="number" name="quantite"  ngModel>
      </div>
      <div class="form-group">
-       <mat-select placeholder="Categorie" [(ngModel)]="categorie" name="item">
+       <mat-select placeholder="Categorie" [(ngModel)]="scategorie" name="item">
          <mat-option *ngFor="let item of categories" [value]="item.nom">
            {{item.nom}}
          </mat-option>
@@ -37,11 +37,19 @@
       </mat-select>
     </div>
     <div class="form-group">
+      <label class="control-label" for="boutique">Boutqiue:</label>
+      <mat-select placeholder="Boutqiue" [(ngModel)]="boutique" name="item">
+        <mat-option *ngFor="let item of boutiques" [value]="item.desc">
+          {{item.desc}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="form-group">
       <label class="control-label" for="my-textarea">Description</label>
       <textarea id="my-textarea" class="form-control" name="description" rows="3" ngModel>
       </textarea>
     </div>
-   <button class="btn btn-success" value="submit" type="submit">Save</button>
+   <button class="btn btn-success" value="submit" type="submit">Enregistrer</button>
   </form>
   </div>
   </div>

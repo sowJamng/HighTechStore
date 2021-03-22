@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import {Articles } from '../model/articles';
 
 @Injectable({
@@ -8,26 +8,40 @@ import {Articles } from '../model/articles';
 })
 export class ArticlesService {
   baseUrl ="http://localhost:8080/HighTechShopApi/rest/articles";
+  cart:number=0;
 
+  private subject = new Subject<any>();
   constructor(private http:HttpClient) { }
   getArticles():Observable<any>{
     return this.http.get(this.baseUrl);
 
   }
+  getArticle(id:number):Observable<any>{;
+    return this.http.get(this.baseUrl +'/'+id);
+ }
+
   addArticle(article:Articles){
-    let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'Cache-Control': 'no-cache'
-         });    
-         let options = {
-      headers: httpHeaders
-         }; 
-   this.http.post(this.baseUrl, article,options);
+   this.http.post<Articles>(this.baseUrl, article);
   }
   updateArticle(article:Articles){
       this.http.put(this.baseUrl, article);
   }
   deleteArticle(id:number){
     this.http.delete(this.baseUrl+'/'+id);
+  }
+
+  getArticleByMarque(marque:string):Observable<any>{
+    return this.http.get(this.baseUrl+'/marque/'+marque);
+  }
+  getArticleBySousCat(sousCat:string):Observable<any>{
+    if(sousCat.search("all")!=-1) return this.getArticles();
+    return this.http.get(this.baseUrl+'/categorie/'+sousCat);
+  }
+
+sendClickEvent() {
+  this.subject.next();
+}
+  getClickEvent(): Observable<any>{
+    return this.subject.asObservable();
   }
 }
