@@ -13,7 +13,7 @@ export class CategoriesService {
   baseUrl ="http://localhost:8080/HighTechShopApi/rest/categories";
 
   constructor(private http:HttpClient) { }
-  getCategories():Observable<any>{
+  getCategoriess():Observable<any>{
     return this.http.get(this.baseUrl);
   }
 
