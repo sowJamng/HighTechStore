@@ -7,7 +7,7 @@ import {Articles } from '../model/articles';
   providedIn: 'root'
 })
 export class ArticlesService {
-  baseUrl ="http://localhost:8080/HighTechShopApi/rest/articles";
+  baseUrl ="http://localhost:8080/HighTechShopApi/shop/rest/articles";
 
   constructor(private http:HttpClient) { }
   getArticles():Observable<any>{
@@ -18,10 +18,10 @@ export class ArticlesService {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
       'Cache-Control': 'no-cache'
-         });    
+         });
          let options = {
       headers: httpHeaders
-         }; 
+         };
    this.http.post(this.baseUrl, article,options);
   }
   updateArticle(article:Articles){

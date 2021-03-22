@@ -12,7 +12,6 @@ export class BoutiqueComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   
   }
 
 }

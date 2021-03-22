@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Admin } from '../model/admin';
@@ -8,11 +8,17 @@ import { Admin } from '../model/admin';
 })
 export class AuthServiceService {
   isAuth = false;
-   admin:Admin= {
-     email:'maodosowdev7@gmail.com',
-     password:'maodo7'
-   };
-     baseUrl:string="http://localhost:8080/HighTechShopApi/rest/admin";
+  // admin:Admin= {
+  //   email:'maodosowdev7@gmail.com',
+  //   password:'maodo7'
+  // };
+  baseUrl:string="http://localhost:8080/shop/rest/admin";
+
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*'
+    })
+  };
 
      constructor(private http:HttpClient) { }
      signIn(adm: Admin){
@@ -54,7 +60,7 @@ export class AuthServiceService {
     getClickAuth(){
       return this.isAuth;
     }
-  
+
 
 
 }
