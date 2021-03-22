@@ -2,8 +2,7 @@
 
 <div class ="container">
   <H1>Ajouter un Boutique</H1>
-  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
-
+  <form  [formGroup]="boutiqueForm" (ngSubmit)="onSubmit()">
     <br>
     <label style="padding-right: 10px"> Id </label>
     <input  type="text" formControlName="id" placeholder="">
@@ -13,32 +12,17 @@
   <label style="padding-right: 10px"> Description </label>
   <input  type="text" formControlName="desc" placeholder="">
   <br>
-  <br>
-
-  <br>
   <label style="padding-right: 10px"> Telephone </label>
   <input type="text" formControlName="phone" placeholder="">
-  <br>
-  <br>
-
   <br>
   <label style="padding-right: 10px"> Adresse </label>
   <input type="text" formControlName="adress" placeholder="">
   <br>
-  <br>
-
-
-  <br>
   <label style="padding-right: 10px"> Email </label>
   <input type="text" formControlName="email" placeholder="">
   <br>
-  <br>
-
-  <br>
-  <button (click)="addBoutique()" class="btn btn-info"   style="margin-right: 10px">Ajouter </button>
-  <input type="submit" class="btn btn-success" [disabled]="!userForm.valid">
+  <button type="button" [disabled]="boutiqueForm.valid" class="btn btn-success"   style="margin-right: 10px">Ajouter </button>
 </form>
 <br>
 
-{{userForm.value | json}}
 </div>

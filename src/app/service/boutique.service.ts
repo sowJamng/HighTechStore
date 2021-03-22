@@ -10,18 +10,17 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class BoutiqueService {
 
-  readonly rootUrl = "http://localhost:8080/shop/rest/admin";
-
+  readonly rootUrl = "http://localhost:8080/shop/rest/boutique";
   readonly httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*'
     })
   };
-
-  constructor(private http: HttpClient) {
-  }
+/*
   private boutiques : Boutique[];
   boutiqueSubject = new Subject<Boutique[]>();
+  constructor(private http: HttpClient) {
+  }
 
   emitBoutique() {
     this.boutiqueSubject.next(this.boutiques.slice());
@@ -31,5 +30,7 @@ export class BoutiqueService {
     this.boutiques.push(boutique);
     this.emitBoutique();
   }
+
+ */
 
 }

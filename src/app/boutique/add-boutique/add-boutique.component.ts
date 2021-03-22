@@ -11,44 +11,29 @@ import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validat
 })
 export class AddBoutiqueComponent implements OnInit {
 
-  userForm: FormGroup;
+  boutiqueForm = new FormGroup({
+    id: new FormControl(''),
+    desc: new FormControl(''),
+    phone: new FormControl(''),
+    email: new FormControl(''),
+    adress: new FormControl('')
+  })
 
   constructor(
     private fb: FormBuilder,
     private boutiqueService: BoutiqueService,
     private router: Router,
-  ) { }
-
-  // tslint:disable-next-line:typedef
-  ngOnInit() {
-    this.initForm();
+  ) {
   }
 
-
-  // tslint:disable-next-line:typedef
-  initForm() {
-    this.userForm = this.fb.group({
-      id : '',
-      desc: '',
-      phone: '',
-      email: '',
-      adress: '',
-    });
+  ngOnInit(): void {
+    console.log(this.boutiqueForm.value);
   }
 
   // tslint:disable-next-line:typedef
-  onSubmitForm() {
-    const formValue = this.userForm.value;
-    const newBoutique = new Boutique(
-      formValue['id'],
-      formValue['desc'],
-      formValue['phone'],
-      formValue['email'],
-      formValue['adress'],
-    );
-    this.boutiqueService.addBoutique(newBoutique);
-    this.router.navigate(['/boutiques']);
+  onSubmit() {
+    if (this.boutiqueForm.valid) {
+      console.log("Form Submitted!");
+    }
   }
-
-
 }
