@@ -11,12 +11,29 @@ import { HomeComponent } from './home/home.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ArticleService } from './service/article.service';
 import { SearchComponent } from './search/search.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartPhoneComponent } from './telephones/smart-phone/smart-phone.component';
 import { DisplayComponent } from './article/display/display.component';
 import { DetailsComponent } from './article/details/details.component';
+import { PhoneFixComponent } from './telephones/phone-fix/phone-fix.component';
+import { AccessoiresPhoneComponent } from './telephones/accessoires-phone/accessoires-phone.component';
+import { DisqueDurComponent } from './stockage/disque-dur/disque-dur.component';
+import { CleUsbComponent } from './stockage/cle-usb/cle-usb.component';
+import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoires-stock.component';
+import { AddArticleComponent } from './article/add-article/add-article.component';
+import { EditArticleComponent } from './article/edit-article/edit-article.component';
+import { MenuComponent } from './menu/menu.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BoutiqueComponent } from './boutique/boutique/boutique.component';
+import { CategorieComponent } from './categorie/categorie/categorie.component';
+import { AddBoutiqueComponent } from './boutique/add-boutique/add-boutique.component';
+import { AddCategorieComponent } from './categorie/add-categorie/add-categorie.component';
+import { ListArticleComponent } from './article/list-article/list-article.component';
+import { EditBoutiqueComponent } from './boutique/edit-boutique/edit-boutique.component';
+import { ArticlesService } from './service/articles.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +47,22 @@ import { DetailsComponent } from './article/details/details.component';
     SearchComponent,
     SmartPhoneComponent,
     DisplayComponent,
-    DetailsComponent
+    DetailsComponent,
+    PhoneFixComponent,
+    AccessoiresPhoneComponent,
+    DisqueDurComponent,
+    CleUsbComponent,
+    AccessoiresStockComponent,
+    AddArticleComponent,
+    EditArticleComponent,
+    MenuComponent,
+    FourOhFourComponent,
+    BoutiqueComponent,
+    CategorieComponent,
+    AddBoutiqueComponent,
+    AddCategorieComponent,
+    ListArticleComponent,
+    EditBoutiqueComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +70,11 @@ import { DetailsComponent } from './article/details/details.component';
     FormsModule,
     RouterModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [ArticleService],
+  providers: [ArticleService,ArticlesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

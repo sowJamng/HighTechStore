@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../service/article.service';
 
 @Component({
@@ -11,6 +11,7 @@ keySearch:string="";
   constructor(private articleService:ArticleService) { }
 
   ngOnInit(): void {
+    this.articleService.getArticleByNameOrMarque(this.keySearch,"");
   }
   onSubmit(){
      return this.articleService.getArticleByNameOrMarque(this.keySearch,"");

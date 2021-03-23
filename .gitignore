@@ -45,7 +45,6 @@ testem.log
 .DS_Store
 Thumbs.db
 .editorconfig
-<<<<<<< HEAD
 .browserslistrc
 angular.json
 package-lock.json
@@ -55,15 +54,15 @@ tsconfig.app.json
 tsconfig.spec.json
 tslint.json
 /environements
-=======
 .browserlistrr
+
+.browserlistc
 package-lock.json
 package.json
 tsconfig.app.json
 tsconfig.app.json
 tsconfig.spec.json
 tslint.json
->>>>>>> feat/listArticle
 karma.conf.js
 .gitkeep
 /.history

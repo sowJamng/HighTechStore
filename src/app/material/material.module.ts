@@ -5,9 +5,13 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {MatBadgeModule} from '@angular/material/badge';
+import {MatBadgeModule} from  '@angular/material/badge';
+import {MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from '@angular/material/core';
+
 const MyMaterialModule=[
-  MatButtonModule,MatIconModule,MatFormFieldModule,MatInputModule,MatBadgeModule
+  MatButtonModule,MatSelectModule,MatIconModule,MatFormFieldModule,
+  MatInputModule,MatBadgeModule,MatOptionModule
 ]
 
 @NgModule({
