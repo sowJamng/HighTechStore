@@ -22,9 +22,6 @@ import { AccessoiresPhoneComponent } from './telephones/accessoires-phone/access
 import { DisqueDurComponent } from './stockage/disque-dur/disque-dur.component';
 import { CleUsbComponent } from './stockage/cle-usb/cle-usb.component';
 import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoires-stock.component';
-import { PhonesModule } from './modules/phones/phones.module';
-import { StockageModule } from './modules/stockage/stockage.module';
-import { HelloWordComponent } from './hello-word/hello-word.component';
 import { AddArticleComponent } from './article/add-article/add-article.component';
 import { EditArticleComponent } from './article/edit-article/edit-article.component';
 import { MenuComponent } from './menu/menu.component';
@@ -55,7 +52,6 @@ import { EditBoutiqueComponent } from './boutique/edit-boutique/edit-boutique.co
     DisqueDurComponent,
     CleUsbComponent,
     AccessoiresStockComponent,
-    HelloWordComponent,
     AddArticleComponent,
     EditArticleComponent,
     MenuComponent,
@@ -74,8 +70,6 @@ import { EditBoutiqueComponent } from './boutique/edit-boutique/edit-boutique.co
     RouterModule,
     BrowserAnimationsModule,
     MaterialModule,
-    PhonesModule,
-    StockageModule,
     HttpClientModule,
     ReactiveFormsModule
   ],

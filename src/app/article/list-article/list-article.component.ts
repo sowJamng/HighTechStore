@@ -1,8 +1,7 @@
-import { Boutique } from './../../model/boutique';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Articles } from 'src/app/model/articles';
-import { Scategorie } from 'src/app/model/souscategorie';
 import { ArticlesService } from 'src/app/service/articles.service';
 
 @Component({

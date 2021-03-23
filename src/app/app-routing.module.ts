@@ -40,17 +40,17 @@ const routes: Routes = [
   {path:'disqueDur',component:DisqueDurComponent},
   { path: 'articleslist', component: ListArticleComponent },
   { path: 'not-found', component: FourOhFourComponent },
-  { path: 'admin', component: MenuComponent },
+  { path: 'admin', component: MenuComponent , canActivate: [ AuthontificationGuardGuard] },
   // { path: '**', redirectTo: 'not-found' },
   {path:'addBoutique',component:AddBoutiqueComponent },
   // {path:'addCategorie',component:AddCategorieComponent, canActivate: [ AuthontificationGuardGuard]},
   {path:'addCategorie',component:AddCategorieComponent},
   // {path:'categories',component:CategorieComponent, canActivate: [ AuthontificationGuardGuard]},
-  {path:'categories',component:CategorieComponent},
-  {path:'boutiques',component:BoutiqueComponent},
-  {path:'addArticle',component:AddArticleComponent},
-  {path:'editArticle',component:EditArticleComponent},
-  {path:'editBoutique',component:EditBoutiqueComponent}
+  {path:'categories',component:CategorieComponent },
+  {path:'boutiques',component:BoutiqueComponent },
+  {path:'addArticle',component:AddArticleComponent , canActivate: [ AuthontificationGuardGuard]},
+  {path:'editArticle',component:EditArticleComponent , canActivate: [ AuthontificationGuardGuard]},
+  {path:'editBoutique',component:EditBoutiqueComponent , canActivate: [ AuthontificationGuardGuard]}
 ];
 
 @NgModule({

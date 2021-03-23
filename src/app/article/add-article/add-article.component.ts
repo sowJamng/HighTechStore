@@ -1,4 +1,4 @@
-import { Marque } from './../../model/marque';
+
 import { Component, OnInit } from '@angular/core';
 import { Categories } from 'src/app/model/categories';
 import { Scategorie} from '../../model/souscategorie';
@@ -29,13 +29,13 @@ export class AddArticleComponent implements OnInit {
  marque:'',
  prix:1,
  scategorie:this.scategorie,
- photo:'',
+ photo:'../../../../assets/images/phones/smart/p3.jpg',
  boutique:this.boutique,
  description:'',
  quantity:1
   };
   articles:Articles[]=[];
- 
+
   boutiques:Boutique[]=[];
   constructor(private router:Router,private articleService: ArticlesService,private scategorieService:ScategoriesService,
     private  ctegorieService: CategoriesService ,private boutiqueService:BoutiqueService) {}

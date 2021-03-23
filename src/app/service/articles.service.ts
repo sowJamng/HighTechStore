@@ -16,15 +16,15 @@ export class ArticlesService {
     return this.http.get(this.baseUrl);
 
   }
-  getArticle(id:number):Observable<any>{;
+  getArticle(id:number):Observable<any>{
     return this.http.get(this.baseUrl +'/'+id);
  }
 
   addArticle(article:Articles):Observable<any>{
     console.log(JSON.stringify(  article));
    return this.http.post<Articles>(this.baseUrl, article);
-  
-  
+
+
   }
   updateArticle(article:Articles):Observable<any>{
       return this.http.put(this.baseUrl, article);

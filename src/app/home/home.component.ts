@@ -1,4 +1,4 @@
-import { Article } from './../model/article';
+
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../service/articles.service';
 import { Articles } from '../model/articles';
