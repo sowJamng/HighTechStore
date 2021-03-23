@@ -1,1 +1,74 @@
-<p>categorie works!</p>
+<!--
+<form>
+  <label>Liste des Categories </label>
+  <p>
+    <label style="padding-right: 10px"> Catégorie "Ordinateurs"</label>
+  </p>
+
+  <p>
+    <label style="padding-right: 10px"> Sous-catégories </label>
+    <select name="Sous-catégorie">
+      <option value="pcBur">PC Bureau</option>
+      <option value="pcPor">PC Portbale</option>
+      <option value="access" selected="selected">Accessoires</option>
+    </select>
+  </p>
+
+  <p>
+    <label style="padding-right: 10px"> Catégorie "Telephones"</label>
+  </p>
+
+  <p>
+    <label style="padding-right: 10px"> Sous-catégories</label>
+    <select name="Sous-catégorie">
+      <option value="SmartPH">SmartPhone</option>
+      <option value="telFix">Telephone Fix</option>
+      <option value="access" selected="selected">Accessoires</option>
+    </select>
+  </p>
+
+  <p>
+    <label style="padding-right: 10px"> Catégorie "Stockage"</label>
+  </p>
+
+  <p>
+    <label style="padding-right: 10px"> Sous-catégories</label>
+    <select name="Sous-catégorie">
+      <option value="DisDur">Disque Dur</option>
+      <option value="CleUsb">Clé USB</option>
+      <option value="access" selected="selected">Accessoires</option>
+    </select>
+  </p>
+  <p>
+    <input class="btn btn-info" type="reset" value="Annuler"/>
+  </p>
+</form>
+-->
+
+
+<div class=container style="width: 40%">
+  <label>Liste des Categories </label>
+  <br>
+  <br>
+  <br>
+  <div>
+    <label>Ordinateurs</label>
+    <select class="custom-select" (select)="hello">
+      <option *ngFor="let subOrdi of subCategoriesOrdi" [ngValue]="subOrdi">{{subOrdi.name}}</option>
+    </select>
+  </div>
+  <br>
+  <div>
+    <label>Telephones</label>
+    <select class="custom-select" (select)="hello">
+      <option *ngFor="let subTel of subCategoriesTel" [ngValue]="subTel">{{subTel.name}}</option>
+    </select>
+  </div>
+  <br>
+  <div>
+    <label>Stockages</label>
+    <select class="custom-select" (select)="hello">
+      <option *ngFor="let subStock of subCategoriesStock" [ngValue]="subStock">{{subStock.name}}</option>
+    </select>
+  </div>
+</div>

@@ -1,7 +1,11 @@
-import { Contact } from "./contact";
+
 
 export interface Boutique {
-  id:number ;
-  nom:string;
-  contact:Contact;
+  id: number ;
+  desc:string;
+  phone:string;
+  email:string;
+  adress:string ;
+  
+
 }

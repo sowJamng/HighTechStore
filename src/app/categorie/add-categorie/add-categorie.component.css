@@ -1,0 +1,21 @@
+h1{
+  padding-top: 10%;
+}
+label {
+  font-size: 18px;
+}
+
+.container {
+  display: block;
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+  margin: 10%;
+  text-align: left;
+}
+
+.subCat {
+  padding-bottom: 3%;
+}

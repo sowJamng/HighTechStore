@@ -1,14 +1,14 @@
 import { Boutique } from "./boutique";
-import { Marque } from "./marque";
-import { Souscategorie } from "./souscategorie";
+import { Scategorie } from "./souscategorie";
 
 export interface Articles {
     id:number;
     libelle:string;
-    marque:Marque ;
+    marque:string ;
     prix:number;
-    categorie:Souscategorie;
+    scategorie:Scategorie;
     photo:string;
     boutique:Boutique;
     description: string;
+    quantity:number;
 }

@@ -1,8 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs';
+import { Observable ,Subject} from 'rxjs';
 import { Article } from '../model/article';
 import { Souscategorie } from '../model/souscategorie';
 
@@ -13,6 +12,7 @@ import { Souscategorie } from '../model/souscategorie';
 export class ArticleService {
   private baseUrl = 'http://localhost:8080/HighTechShopApi/rest/articles';
   cart:number=0;
+  auth:boolean=false;
   articleget:Article[]=[];
   art:Article =new Article(0,'','',0,'','',new Souscategorie(0,''));
   articles:Article[]=[
@@ -63,7 +63,7 @@ getClickEvent(): Observable<any>{
   return this.subject.asObservable();
 }
 
-getArticle(id:number):Article{;
+getArticle(id:number):Article{
    this.articles.forEach(article=>{
      if(article.id==id){
        this.art=article;
@@ -71,16 +71,5 @@ getArticle(id:number):Article{;
      return this.art;
 }
 
-addArticle(article:any){
-  this.http.post(this.baseUrl,article);
-}
-getAllarticles(){
-  return this.http.get(this.baseUrl);
-}
-deleteArticle(id:number):Observable<any>{
-  return this.http.delete(this.baseUrl+'/'+id);
-}
-updateArticle(article:Article):Observable<any>{
-  return this.http.put(this.baseUrl,article);
-}
+
 }

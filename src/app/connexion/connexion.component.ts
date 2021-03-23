@@ -33,7 +33,7 @@ authStatus=false;
 
     return this.emailv.hasError('email') ? 'Email non valide ' : '';
   }
-  getErrorPasswor(){
+  getErrorPassword(){
     return 'mot de passe  non valide '
   }
 
@@ -43,14 +43,28 @@ authStatus=false;
         if(res==true)
            { console.log("connexion reussit avec succes ");
              this.authStatus = this.authService.isAuth;
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('admin');
       }
         else
            alert("veuillez revoir votre email et mot de passe");
       }
     );
 }
-
+onLogin() {
+  this.authService.login(this.admin).subscribe(res=>{
+    if(res==true){
+      console.log("connexion reussit avec succes ");
+      this.authService.isAuth=true;
+      this.authStatus = this.authService.isAuth;
+      this.router.navigateByUrl('/admin');//admin
+    }
+    else {
+    alert("veuillez revoir votre email et mot de passe");
+    }
+  },
+  err=>console.log(err)
+  );
+}
 reloadData() {
   this.authService.getAdmins().subscribe(data=> {
     this.admins = data;

@@ -45,6 +45,17 @@ testem.log
 .DS_Store
 Thumbs.db
 .editorconfig
+.browserslistrc
+angular.json
+package-lock.json
+package.json
+.angulardoc.json
+tsconfig.app.json
+tsconfig.spec.json
+tslint.json
+/environements
+.browserlistrr
+
 .browserlistc
 package-lock.json
 package.json

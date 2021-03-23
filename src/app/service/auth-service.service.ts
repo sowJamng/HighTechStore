@@ -8,11 +8,11 @@ import { Admin } from '../model/admin';
 })
 export class AuthServiceService {
   isAuth = false;
-   admin:Admin= {
-     email:'maodosowdev7@gmail.com',
-     password:'maodo7'
-   };
-     baseUrl:string="http://localhost:8080/HighTechShopApi/rest/admin";
+   // admin:Admin= {
+   //   email:'maodosowdev7@gmail.com',
+   //   password:'maodo7'
+   // };
+     baseUrl:string="http://localhost:8080/shop/rest/admin";
 
      constructor(private http:HttpClient) { }
      signIn(adm: Admin){
@@ -38,12 +38,23 @@ export class AuthServiceService {
         }
       );
     }
+  login(adm:Admin):Observable<any>{
+    if(this.http.get<any>(this.baseUrl+'/login/'+adm.email+'/'+adm.password))
+             { this.isAuth = true;
+             }
+    return this.http.get(this.baseUrl+'/login/'+adm.email+'/'+adm.password);
+  }
     getAdmins():Observable<any>{
       return this.http.get<any>(this.baseUrl);
     }
     signOut() {
       this.isAuth = false;
     }
+
+    getClickAuth(){
+      return this.isAuth;
+    }
+
 
 
 }
