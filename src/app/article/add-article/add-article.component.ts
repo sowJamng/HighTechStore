@@ -1,7 +1,6 @@
 import { Marque } from './../../model/marque';
 import { Component, OnInit } from '@angular/core';
 import { Categories } from 'src/app/model/categories';
-import { ArticleService } from 'src/app/service/article.service';
 import { Scategorie} from '../../model/souscategorie';
 import {ScategoriesService} from 'src/app/service/scategories.service';
 import {CategoriesService} from 'src/app/service/categories.service';
@@ -9,6 +8,7 @@ import { Articles } from 'src/app/model/articles';
 import { ArticlesService } from 'src/app/service/articles.service';
 import { Boutique } from 'src/app/model/boutique';
 import { BoutiqueService } from 'src/app/service/boutique.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-article',
   templateUrl: './add-article.component.html',
@@ -20,13 +20,24 @@ export class AddArticleComponent implements OnInit {
   public mode: number = 1;
   scategories:Scategorie[]=[];
   categories:Categories[]=[];
-  categorie:Categories={id:1,nom:''}
+  categorie:Categories={id:1,nom:''};
   scategorie:Scategorie={id:1,nom:''};
-  article:any;
-  articles:Articles[]=[];
   boutique:Boutique={id:1,desc:'',phone:'',email:'',adress:''};
+  article:Articles={
+ id:1,
+ libelle:'',
+ marque:'',
+ prix:1,
+ scategorie:this.scategorie,
+ photo:'',
+ boutique:this.boutique,
+ description:'',
+ quantity:1
+  };
+  articles:Articles[]=[];
+ 
   boutiques:Boutique[]=[];
-  constructor(private articleService: ArticlesService,private scategorieService:ScategoriesService,
+  constructor(private router:Router,private articleService: ArticlesService,private scategorieService:ScategoriesService,
     private  ctegorieService: CategoriesService ,private boutiqueService:BoutiqueService) {}
 
   ngOnInit() {
@@ -37,7 +48,11 @@ export class AddArticleComponent implements OnInit {
   }
   onAddArticle(article:Articles) {
     console.log(article);
-    this.articleService.addArticle(article);
+    this.articleService.addArticle(article).subscribe(data=>{
+      console.log(data);
+
+    },err=>console.log(err));
+    this.router.navigateByUrl('/articleslist');
  }
 
  reloadData() {
@@ -46,13 +61,14 @@ export class AddArticleComponent implements OnInit {
    },err=>console.log(err))
  }
  loadCategories(){
-   this.ctegorieService.getCategories().subscribe(data=>{
+   this.ctegorieService.getCategoriess().subscribe(data=>{
      this.categories=data;
    },err=>console.log(err))
  }
  loadSousCategories(){
   this.scategorieService.getScategories().subscribe(data=>{
     this.scategories=data;
+    console.log("sous :"+data);
   },err=>console.log(err))
 }
 loadBoutiques(){

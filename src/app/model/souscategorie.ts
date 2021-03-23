@@ -1,4 +1,5 @@
 import { CategoriesService } from '../service/categories.service';
+import { Categories } from './categories';
 export class Souscategorie {
     _id:number;
     _nom:string;
@@ -14,4 +15,5 @@ export class Souscategorie {
 export interface Scategorie{
   id:number;
   nom:string;
+  //categorie:Categories;
 }

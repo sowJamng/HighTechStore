@@ -10,15 +10,13 @@ import { Categories } from '../model/categories';
   providedIn: 'root'
 })
 export class CategoriesService {
-  readonly rootUrl = 'http://localhost:8080/shop/rest/category';
-
+  readonly rootUrl = 'http://localhost:8080/HighTechShopApi/rest/category';
+            baseUrl ="http://localhost:8080/HighTechShopApi/rest/categories";
   readonly httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin':'*'
     })
   };
-
-  baseUrl ="http://localhost:8080/HighTechShopApi/rest/categories";
 
   constructor(private http:HttpClient) { }
   getCategoriess():Observable<any>{
@@ -35,7 +33,7 @@ export class CategoriesService {
 
   deleteCategorie(id:number){
     this.http.delete(this.baseUrl+'/'+id);
-
+  }
 
   getAllCategories(): Observable<Categorie[]>{
     return this.http.get<Categorie[]>(this.rootUrl + '/categories');

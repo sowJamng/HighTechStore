@@ -12,7 +12,7 @@ export class AuthServiceService {
    //   email:'maodosowdev7@gmail.com',
    //   password:'maodo7'
    // };
-     baseUrl:string="http://localhost:8080/shop/rest/admin";
+     baseUrl:string="http://localhost:8080/HighTechShopApi/rest/admin";
 
      constructor(private http:HttpClient) { }
      signIn(adm: Admin){

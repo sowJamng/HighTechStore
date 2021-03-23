@@ -20,14 +20,17 @@ export class ArticlesService {
     return this.http.get(this.baseUrl +'/'+id);
  }
 
-  addArticle(article:Articles){
-   this.http.post<Articles>(this.baseUrl, article);
+  addArticle(article:Articles):Observable<any>{
+    console.log(JSON.stringify(  article));
+   return this.http.post<Articles>(this.baseUrl, article);
+  
+  
   }
-  updateArticle(article:Articles){
-      this.http.put(this.baseUrl, article);
+  updateArticle(article:Articles):Observable<any>{
+      return this.http.put(this.baseUrl, article);
   }
-  deleteArticle(id:number){
-    this.http.delete(this.baseUrl+'/'+id);
+  deleteArticle(id:number):Observable<any>{
+    return this.http.delete(this.baseUrl+'/'+id);
   }
 
   getArticleByMarque(marque:string):Observable<any>{
