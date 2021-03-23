@@ -27,3 +27,5 @@ export class Article {
  public get marque(){return this._marque;}
 
 }
+
+

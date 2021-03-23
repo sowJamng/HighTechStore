@@ -1,0 +1,30 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Libelle</th>
+      <th scope="col">Marque</th>
+      <th scope="col">Prix</th>
+      <th scope="col">souscategorie</th>
+      <th scope="col">Image</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr   *ngFor="let articlee of articles; let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{articlee.libelle}}</td>
+      <td>{{articlee.marque}}</td>
+      <td>{{articlee.prix}}</td>
+      <td>{{articlee.scategorie.nom}}</td>
+   
+      <td>{{articlee.description}}</td>
+      <td><img src={{articlee.photo}} class="card-img" alt="alt"/></td>
+      <td class="btn btn-danger"  (click)="onDeleteArticles(article.id)">Supprimer</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td class="btn btn-success"  (click)="onUpdateArticles(article)">Modifier</td>
+    </tr>
+
+  </tbody>
+</table>
+

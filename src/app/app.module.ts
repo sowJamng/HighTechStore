@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ArticleService } from './service/article.service';
 import { SearchComponent } from './search/search.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartPhoneComponent } from './telephones/smart-phone/smart-phone.component';
@@ -22,6 +22,20 @@ import { AccessoiresPhoneComponent } from './telephones/accessoires-phone/access
 import { DisqueDurComponent } from './stockage/disque-dur/disque-dur.component';
 import { CleUsbComponent } from './stockage/cle-usb/cle-usb.component';
 import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoires-stock.component';
+import { PhonesModule } from './modules/phones/phones.module';
+import { StockageModule } from './modules/stockage/stockage.module';
+import { HelloWordComponent } from './hello-word/hello-word.component';
+import { AddArticleComponent } from './article/add-article/add-article.component';
+import { EditArticleComponent } from './article/edit-article/edit-article.component';
+import { MenuComponent } from './menu/menu.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BoutiqueComponent } from './boutique/boutique/boutique.component';
+import { CategorieComponent } from './categorie/categorie/categorie.component';
+import { AddBoutiqueComponent } from './boutique/add-boutique/add-boutique.component';
+import { AddCategorieComponent } from './categorie/add-categorie/add-categorie.component';
+import { ListArticleComponent } from './article/list-article/list-article.component';
+import { EditBoutiqueComponent } from './boutique/edit-boutique/edit-boutique.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +54,18 @@ import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoi
     AccessoiresPhoneComponent,
     DisqueDurComponent,
     CleUsbComponent,
-    AccessoiresStockComponent
+    AccessoiresStockComponent,
+    HelloWordComponent,
+    AddArticleComponent,
+    EditArticleComponent,
+    MenuComponent,
+    FourOhFourComponent,
+    BoutiqueComponent,
+    CategorieComponent,
+    AddBoutiqueComponent,
+    AddCategorieComponent,
+    ListArticleComponent,
+    EditBoutiqueComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +73,11 @@ import { AccessoiresStockComponent } from './stockage/accessoires-stock/accessoi
     FormsModule,
     RouterModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    PhonesModule,
+    StockageModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

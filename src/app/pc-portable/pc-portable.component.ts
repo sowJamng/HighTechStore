@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../model/article';
+import {  Articles } from '../model/articles';
 import { ArticleService } from '../service/article.service';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { PcportableService } from '../service/pcportable.service';
+
 
 @Component({
   selector: 'app-pc-portable',
@@ -9,15 +10,17 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrls: ['./pc-portable.component.css']
 })
 export class PcPortableComponent implements OnInit {
-articles:Article[]=[];
-  constructor(private articleService:ArticleService) { }
+  articles: Articles[] = [];
+  constructor(private pcportableService: PcportableService) { }
 
   ngOnInit(): void {
-    //this.getAllArticle();
+    this.pcportableService.getAll().subscribe(res => {
+      this.articles = res;
+      console.log(res);
+      });
+
   }
 
-  // getAllArticle(){
-  //  this.articles=this.articleService.getArticleBySousCat("Portable");
-  // }
+
 
 }

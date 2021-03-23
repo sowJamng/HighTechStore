@@ -1,0 +1,51 @@
+<!--<form>-->
+<!--<p>Add a new catégorie</p>-->
+<!--<p>-->
+<!--  Saisir votre catégorie :<br />-->
+<!--  <input type="text" name="categorie" value="" />-->
+<!--</p>-->
+
+<!--<p>-->
+<!--Choisir vos sous-catégories :<br />-->
+<!--<select name="Sous-catégorie">-->
+<!--  <option value="pcBur">PC Bureau</option>-->
+<!--  <option value="pcPor">PC Portbale</option>-->
+<!--  <option value="SmartPH">SmartPhone</option>-->
+<!--  <option value="telFix">Telephone Fix</option>-->
+<!--  <option value="DisDur">Disque Dur</option>-->
+<!--  <option value="CleUsb">Clé USB</option>-->
+<!--  <option value="access" selected="selected">Accessoires</option>-->
+<!--</select>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <input type="submit" value="Valider" />-->
+<!--  <input type="reset" value="Annuler" />-->
+<!--</p>-->
+<!--</form>-->
+
+<div class ="container">
+  <H1>Ajouter une sous catégorie d'article</H1>
+<form [formGroup]="userForm" (ngSubmit)="send()">
+  <div class="mb-3">
+    <select class="custom-select" formControlName="categorie">
+      <option value="">choisissez une catégorie</option>
+      <option *ngFor="let categorie of categories" [ngValue]="categorie">{{categorie.name}}</option>
+    </select>
+  </div>
+
+  <div *ngFor="let subCategory of getSubCategoriesFormControls(); let i = index">
+    <div class="subCat">
+    <label style="padding-right: 10px">Ajouter une Sous-Categorie </label>
+    <input  [formControl]="subCategory" type="text"  placeholder="ex. PC Portable">
+    <button (click)="removeCategory(i)" class="btn btn-danger btn-sm"   style="margin-left: 10px; ">Supprimer </button>
+  </div>
+</div>
+  <br>
+  <button (click)="addCategory()" class="btn btn-info"   style="margin-right: 10px">Ajouter </button>
+  <input type="submit" class="btn btn-success" [disabled]="!userForm.valid">
+</form>
+<br>
+
+{{userForm.value | json}}
+</div>

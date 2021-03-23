@@ -1,0 +1,58 @@
+
+
+<div class="container">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <h1 class="text-center " style="color: blue;">Nouveau Produit</h1>
+  <div class="panel panel-default">
+  <div class="panel-body" *ngIf="mode==1" >
+  <form  (ngSubmit)="onAddArticle(f.value)" #f="ngForm">
+  <div class="form-group">
+  <label class="control-label">libelle</label>
+  <input class="form-control" type="text" name="libelle"  [(ngModel)]="article.libelle">
+   </div>
+   <div class="form-group">
+    <label class="control-label">Marque</label>
+    <input class="form-control" type="text" name="marque"  [(ngModel)]="article.marque">
+     </div>
+   <div class="form-group">
+  <label class="control-label">Prix</label>
+  <input class="form-control" type="text" name="price"  [(ngModel)]="article.prix">
+   </div>
+   <div class="form-group"  >
+    <label class="control-label">Quantite</label>
+    <input class="form-control" type="number" name="quantite" [(ngModel)]="article.quantity">
+     </div>
+     <!-- <div class="form-group">
+       <mat-select placeholder="Categorie" [(ngModel)]="scategorie" name="item">
+         <mat-option *ngFor="let item of categories" [value]="item.nom">
+           {{item.nom}}
+         </mat-option>
+       </mat-select>
+     </div> -->
+     <div class="form-group">
+      <label class="control-label" for="boutique">SousCategorie:</label>
+      <mat-select placeholder="Sous Categorie"  name="scategorie"[(ngModel)]="article.scategorie">
+        <mat-option *ngFor="let item of scategories" [value]="item">
+          {{item.nom}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="boutique">Boutqiue:</label>
+      <mat-select placeholder="Boutqiue" [(ngModel)]="article.boutique" name="boutique">
+        <mat-option *ngFor="let item of boutiques" [value]="item">
+          {{item.desc}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="my-textarea">Description</label>
+      <textarea id="my-textarea" class="form-control" name="description" rows="3" [(ngModel)]="article.description">
+      </textarea>
+    </div>
+   <button class="btn btn-success" value="submit" type="submit">Enregistrer</button>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
