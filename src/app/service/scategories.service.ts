@@ -7,7 +7,7 @@ import { Souscategorie } from '../model/souscategorie';
   providedIn: 'root'
 })
 export class ScategoriesService {
-  baseUrl ="http://localhost:8080/HighTechShopApi/rest/scategories";
+  baseUrl ="http://localhost:8080/shop/rest/scategories";
 
   constructor(private http:HttpClient) { }
 

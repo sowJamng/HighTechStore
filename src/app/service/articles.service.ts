@@ -7,7 +7,7 @@ import {Articles } from '../model/articles';
   providedIn: 'root'
 })
 export class ArticlesService {
-  baseUrl ="http://localhost:8080/HighTechShopApi/rest/articles";
+  baseUrl ="http://localhost:8080/shop/rest/articles";
   cart:number=0;
 
   private subject = new Subject<any>();
@@ -23,8 +23,8 @@ export class ArticlesService {
   addArticle(article:Articles):Observable<any>{
     console.log(JSON.stringify(  article));
    return this.http.post<Articles>(this.baseUrl, article);
-  
-  
+
+
   }
   updateArticle(article:Articles):Observable<any>{
       return this.http.put(this.baseUrl, article);

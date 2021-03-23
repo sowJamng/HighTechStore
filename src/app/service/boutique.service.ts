@@ -8,7 +8,7 @@ import { Boutique } from '../model/boutique';
 })
 export class BoutiqueService {
 
-  baseUrl ="http://localhost:8080/HighTechShopApi/rest/boutiques";
+  baseUrl ="http://localhost:8080/shop/rest/boutiques";
 
   constructor(private http:HttpClient) { }
 

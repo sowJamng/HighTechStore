@@ -10,8 +10,8 @@ import { Categories } from '../model/categories';
   providedIn: 'root'
 })
 export class CategoriesService {
-  readonly rootUrl = 'http://localhost:8080/HighTechShopApi/rest/category';
-            baseUrl ="http://localhost:8080/HighTechShopApi/rest/categories";
+  readonly rootUrl = 'http://localhost:8080/shop/rest/category';
+            baseUrl ="http://localhost:8080/shop/rest/categories";
   readonly httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin':'*'
