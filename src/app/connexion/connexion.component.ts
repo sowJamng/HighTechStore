@@ -33,7 +33,7 @@ authStatus=false;
 
     return this.emailv.hasError('email') ? 'Email non valide ' : '';
   }
-  getErrorPasswor(){
+  getErrorPassword(){
     return 'mot de passe  non valide '
   }
 
@@ -61,7 +61,7 @@ onLogin() {
     else {
     alert("veuillez revoir votre email et mot de passe");
     }
-  }, 
+  },
   err=>console.log(err)
   );
 }

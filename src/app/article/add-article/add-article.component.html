@@ -16,12 +16,16 @@
      </div>
    <div class="form-group">
   <label class="control-label">Prix</label>
-  <input class="form-control" type="text" name="price"  [(ngModel)]="article.prix">
+  <input class="form-control" type="text" name="prix"  [(ngModel)]="article.prix">
    </div>
    <div class="form-group"  >
     <label class="control-label">Quantite</label>
-    <input class="form-control" type="number" name="quantite" [(ngModel)]="article.quantity">
+    <input class="form-control" type="number" name="quantity" [(ngModel)]="article.quantity">
      </div>
+     <div class="form-group"  >
+      <label class="control-label">Photo</label>
+      <input class="form-control" type="text" name="photo" [(ngModel)]="article.photo">
+       </div>
      <!-- <div class="form-group">
        <mat-select placeholder="Categorie" [(ngModel)]="scategorie" name="item">
          <mat-option *ngFor="let item of categories" [value]="item.nom">

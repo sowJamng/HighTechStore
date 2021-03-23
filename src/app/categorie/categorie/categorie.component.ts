@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoriesService} from '../../service/categories.service';
 import {Categorie} from '../../model/Categorie';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {FormBuilder, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-categorie',

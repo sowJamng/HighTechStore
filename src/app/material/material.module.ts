@@ -11,7 +11,7 @@ import {MatOptionModule} from '@angular/material/core';
 
 const MyMaterialModule=[
   MatButtonModule,MatSelectModule,MatIconModule,MatFormFieldModule,
-  MatInputModule,MatBadgeModule
+  MatInputModule,MatBadgeModule,MatOptionModule
 ]
 
 @NgModule({

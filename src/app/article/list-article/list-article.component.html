@@ -1,3 +1,5 @@
+<div class="container">
+
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -6,7 +8,7 @@
       <th scope="col">Marque</th>
       <th scope="col">Prix</th>
       <th scope="col">souscategorie</th>
-      <th scope="col">Image</th>
+      <!-- <th scope="col">Image</th> -->
       <th scope="col">Description</th>
     </tr>
   </thead>
@@ -17,9 +19,9 @@
       <td>{{articlee.marque}}</td>
       <td>{{articlee.prix}}</td>
       <td>{{articlee.scategorie.nom}}</td>
-   
+
       <td>{{articlee.description}}</td>
-      <td><img src={{articlee.photo}} class="card-img" alt="alt"/></td>
+      <!-- <td><img src={{articlee.photo}} class="card-img" alt="alt"/></td> -->
       <td class="btn btn-danger"  (click)="onDeleteArticles(article.id)">Supprimer</td>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <td class="btn btn-success"  (click)="onUpdateArticles(article)">Modifier</td>
@@ -27,4 +29,4 @@
 
   </tbody>
 </table>
-
+</div>

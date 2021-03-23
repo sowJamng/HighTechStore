@@ -39,7 +39,7 @@ export class CategoriesService {
     return this.http.get<Categorie[]>(this.rootUrl + '/categories');
   }
 
-  postNewCategory(selectedParent: number, subcategories:String[]) : Observable<any>{
+  postNewCategory(selectedParent: number, subcategories:string[]) : Observable<any>{
     const requestBody = {
       idParent: selectedParent,
       listeSousCategories: subcategories,

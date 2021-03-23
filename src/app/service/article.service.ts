@@ -1,8 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs';
+import { Observable ,Subject} from 'rxjs';
 import { Article } from '../model/article';
 import { Souscategorie } from '../model/souscategorie';
 
@@ -64,7 +63,7 @@ getClickEvent(): Observable<any>{
   return this.subject.asObservable();
 }
 
-getArticle(id:number):Article{;
+getArticle(id:number):Article{
    this.articles.forEach(article=>{
      if(article.id==id){
        this.art=article;

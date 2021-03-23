@@ -25,7 +25,7 @@ export class AddCategorieComponent implements OnInit {
     this.userForm = this.fb.group({
       categorie: ['',[Validators.required]],
       subCategories: this.fb.array([
-        this.fb.control('',[Validators.required]),
+        this.fb.control('',[Validators.required])
       ])
     });
   }

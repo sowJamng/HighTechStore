@@ -16,7 +16,7 @@ export class ArticlesService {
     return this.http.get(this.baseUrl);
 
   }
-  getArticle(id:number):Observable<any>{;
+  getArticle(id:number):Observable<any>{
     return this.http.get(this.baseUrl +'/'+id);
  }
 
